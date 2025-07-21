@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function BenefitsSection() {
-  const [tab, setTab] = useState("candidate");
+  const [tab, setTab] = useState("enterprise");
 
-  // You can swap content per tab if needed
-  const benefits = [
+  // Content for Individual/Candidate tab
+  const candidateBenefits = [
     {
       img: "/resume.png",
       title: "Resume That Stands Out",
@@ -23,6 +23,28 @@ export default function BenefitsSection() {
       desc: "Mock interviews in a professional setting help candidates build confidence for real employer interviews.",
     },
   ];
+
+  // Content for Enterprise tab
+  const enterpriseBenefits = [
+    {
+      img: "/save-time.png",
+      title: "Save Engineering Time",
+      desc: "Let experts handle your technical interviews while your team focuses on building.",
+    },
+    {
+      img: "/image-2.png",
+      title: "Expert Interviewers",
+      desc: "Let experts handle your technical interviews while your team focuses on building.",
+    },
+    {
+      img: "/evaluation.png",
+      title: "Comprehensive Evaluation",
+      desc: "Let experts handle your technical interviews while your team focuses on building.",
+    },
+  ];
+
+  // Select benefits based on active tab
+  const benefits = tab === "enterprise" ? enterpriseBenefits : candidateBenefits;
 
   return (
     <section className="w-full bg-white py-[60px] flex flex-col items-center relative overflow-x-hidden">
@@ -42,7 +64,7 @@ export default function BenefitsSection() {
             }`}
             onClick={() => setTab("enterprise")}
           >
-            For Enterprise
+            Enterprise
           </button>
           <button
             className={`px-7 py-2 rounded-full font-semibold text-[18px] transition-colors border ${
@@ -52,7 +74,7 @@ export default function BenefitsSection() {
             }`}
             onClick={() => setTab("candidate")}
           >
-            For Candidate
+            Individual
           </button>
         </div>
       </div>

@@ -23,3 +23,13 @@
 html, body, * {
   font-family: 'Lexend', sans-serif !important;
 }
+
+/* Logo scrolling animation for mobile */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1000px); /* Move by width of 5 logos (5 * 200px) */
+  }
+}

@@ -23,11 +23,11 @@ export default function Home() {
     >
       <Navbar />
       <HeroSection />
-      <Trusted/>
-      <FeaturesSection />
-      <BenefitsSection />
-      <ResultsSection />
-      <TestimonialSection />
+        {/* <Trusted/> */}
+        <FeaturesSection />
+        <BenefitsSection />
+        <ResultsSection />
+        <TestimonialSection />
     </div>
   );
 }
