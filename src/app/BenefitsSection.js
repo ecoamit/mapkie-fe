@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useTab } from "./TabContext";
 
 export default function BenefitsSection() {
-  const [tab, setTab] = useState("enterprise");
+
+  const { selectedTab: tab } = useTab();
 
   // Content for Individual/Candidate tab
   const candidateBenefits = [
@@ -54,29 +55,7 @@ export default function BenefitsSection() {
       <div className="w-full max-w-[1100px] mx-auto text-center mb-2 z-10 relative">
         <h2 className="text-[36px] md:text-[40px] font-extrabold text-[#17445A] mb-3 leading-tight tracking-tight">Key Benefits</h2>
         <p className="text-[#586977] text-[16px] mb-14 font-regular">Your All-in-One Platform to Get Interview-Ready and Get Hired</p>
-        {/* Tabs */}
-        <div className="flex justify-center gap-4 mb-10">
-          <button
-            className={`px-7 py-2 rounded-full font-semibold text-[18px] transition-colors border ${
-              tab === "enterprise"
-                ? "bg-[#007080] text-white border-[#007080]"
-                : "bg-white text-[#007080] border-[#007080]"
-            }`}
-            onClick={() => setTab("enterprise")}
-          >
-            Enterprise
-          </button>
-          <button
-            className={`px-7 py-2 rounded-full font-semibold text-[18px] transition-colors border ${
-              tab === "candidate"
-                ? "bg-[#007080] text-white border-[#007080]"
-                : "bg-white text-[#007080] border-[#007080]"
-            }`}
-            onClick={() => setTab("candidate")}
-          >
-            Individual
-          </button>
-        </div>
+        {/* Tab selection is now handled in HeroSection. */}
       </div>
       {/* Rectangle background behind image boxes */}
       <div className="w-full max-w-[1200px] relative flex justify-center items-center px-4 md:px-0 z-10" style={{ minHeight: 390 }}>

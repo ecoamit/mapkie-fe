@@ -1,17 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+
+
 @import "tailwindcss";
+/* Import all Lexend font weights and styles */
+@import "@fontsource/lexend/100.css";
+@import "@fontsource/lexend/200.css";
+@import "@fontsource/lexend/300.css";
+@import "@fontsource/lexend/400.css";
+@import "@fontsource/lexend/500.css";
+@import "@fontsource/lexend/600.css";
+@import "@fontsource/lexend/700.css";
+@import "@fontsource/lexend/800.css";
+@import "@fontsource/lexend/900.css";
+
+html, body {
+  font-family: 'Lexend', var(--font-lexend), var(--font-geist-sans), var(--font-geist-mono), sans-serif;
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -20,9 +30,7 @@
   }
 }
 
-html, body, * {
-  font-family: 'Lexend', sans-serif !important;
-}
+
 
 /* Logo scrolling animation for mobile */
 @keyframes scrollLogos {

@@ -23,7 +23,9 @@ export default function Home() {
     >
       <Navbar />
       <HeroSection />
-        {/* <Trusted/> */}
+        <div className="hidden md:block">
+          <Trusted/>
+        </div>
         <FeaturesSection />
         <BenefitsSection />
         <ResultsSection />
