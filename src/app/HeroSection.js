@@ -6,7 +6,9 @@ export default function HeroSection() {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
 
   return (
-    <section className="relative w-full min-h-screen md:min-h-[850px] bg-[#E8F0F3] overflow-hidden flex items-center py-8 md:pb-50 pl-10 pr-0 md:pt-0">
+    <section
+      className="relative w-full min-h-[calc(100svh-80px)] md:min-h-[80vh] lg:min-h-[850px] max-h-screen bg-[#E8F0F3] overflow-hidden flex items-center py-6 md:py-10 lg:py-12 pl-4 md:pl-10 pr-0 md:pt-0"
+    >
 
       {/* Background Image */}
       <div className="absolute bottom-[-600px] md:bottom-[-460px] inset-0 z-0">
@@ -16,7 +18,7 @@ export default function HeroSection() {
       {/* Main Content Container */}
       <div className="relative w-full max-w-[1600px] flex flex-col md:flex-row items-start z-10 mx-4 sm:mx-8 md:mx-16 lg:mx-32 px-4 md:px-0">
         {/* Text Block */}
-        <div className="w-full md:max-w-[800px] pt-0 md:pt-[40px] text-center md:text-left">
+        <div className="w-full md:max-w-[800px] pt-0 text-center md:text-left">
           {/* Tabs */}
           <div className="w-full max-w-[420px] mx-auto md:mx-0 mb-6">
             <div className="flex relative text-base md:text-[16px] font-medium items-center select-none">
@@ -27,7 +29,7 @@ export default function HeroSection() {
                 style={{ position: 'relative', zIndex: 2 }}
                 onClick={() => setTab("enterprise")}
               >
-                FOR ENTERPRISE
+                ENTERPRISE
                 {/* Inactive underline */}
                 {tab !== "enterprise" && (
                   <span className="block absolute left-1 -translate-x-1 bottom-0 h-[1.5px] bg-[#C4D3DB]" style={{width: '90%', zIndex: 5, left: '50%', transform: 'translateX(-50%)'}} />
@@ -40,7 +42,7 @@ export default function HeroSection() {
                 style={{ position: 'relative', zIndex: 2 }}
                 onClick={() => setTab("candidate")}
               >
-                FOR CANDIDATE
+                CANDIDATE
                 {/* Inactive underline */}
                 {tab !== "candidate" && (
                   <span className="block absolute left-1 -translate-x-1 bottom-0 h-[1.5px] bg-[#C4D3DB]" style={{width: '90%', zIndex: 5, left: '50%', transform: 'translateX(-50%)'}} />
@@ -88,7 +90,7 @@ export default function HeroSection() {
           {/* CTA Button */}
           <div className="flex justify-center md:justify-start">
             <button
-              className="text-white px-8 py-3 md:px-10 md:py-3 rounded-full font-medium text-sm md:text-[16px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] flex items-center justify-center bg-transparent border border-solid"
+              className="text-white px-8 py-3 md:px-10 md:py-3 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] flex items-center justify-center bg-transparent border border-solid"
               style={{
                 boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
                 letterSpacing: "0.5px",
@@ -140,17 +142,17 @@ export default function HeroSection() {
           {tab === "enterprise" ? (
             <>
               {/* Person illustration - positioned on the left */}
-              <div className="absolute left-[-730px] bottom-[-220px] z-10 ">
+              <div className="absolute left-[-730px] bottom-[-120px] z-10 ">
                 <Image src="/interviewer-on-laptop.svg" alt="Interviewer" width={562} height={352} priority />
               </div>
 
               {/* Job Profiles Card */}
-              <div className="absolute left-[130px] top-[30px] z-20 overflow-hidden">
+              <div className="absolute left-[130px] top-[-40px] z-20 overflow-hidden">
                 <Image src="/job-profiles-card.png" alt="Job Profiles" width={700} height={620} />
               </div>
 
               {/* Pipeline Status Card (replacing small status card) */}
-              <div className="absolute right-[35px] top-[0px] z-30 overflow-hidden">
+              <div className="absolute right-[35px] top-[-60px] z-30 overflow-hidden">
                 <Image src="/pipeline-status-card.png" alt="Pipeline Status" width={350} height={280} />
               </div>
 
@@ -162,7 +164,7 @@ export default function HeroSection() {
           ) : (
             <>
               {/* Man running illustration */}
-              <div className="absolute left-[0px] bottom-[-150px] z-10">
+              <div className="absolute left-[0px] bottom-[-80px] z-10">
                 <Image src="/man-running.png" alt="Man running" width={570} height={655} priority />
               </div>
               {/* Mapkie logo circle */}
@@ -170,12 +172,12 @@ export default function HeroSection() {
                 <Image src="/mapkie-logo.png" alt="Mapkie Logo" width={60} height={60} />
               </div>
               {/* Company avatars */}
-              <div className="absolute left-[350px] top-[70px] z-30 flex flex-col gap-6 items-center">
+              <div className="absolute left-[580px] top-[70px] z-30 flex flex-col gap-6 items-center">
                 <div className="bg-white rounded-full shadow-md flex items-center justify-center" style={{width:64, height:64}}>
                   <Image src="/amazon.png" alt="Amazon" width={40} height={40} />
                 </div>
                 <div className="bg-white rounded-full shadow-md flex items-center justify-center" style={{width:64, height:64}}>
-                  <Image src="/google.png" alt="Google" width={40} height={40} />
+                  <Image src="/amazon.png" alt="Amazon" width={40} height={40} />
                 </div>
               </div>
             </>

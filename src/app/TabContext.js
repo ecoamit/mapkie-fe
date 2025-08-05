@@ -3,12 +3,12 @@ import React, { createContext, useContext, useState } from 'react';
 
 // Possible values: 'enterprise' | 'candidate'
 const TabContext = createContext({
-  selectedTab: 'enterprise',
+  selectedTab: 'candidate',
   setSelectedTab: () => {},
 });
 
 export const TabProvider = ({ children }) => {
-  const [selectedTab, setSelectedTab] = useState('enterprise');
+  const [selectedTab, setSelectedTab] = useState('candidate');
   return (
     <TabContext.Provider value={{ selectedTab, setSelectedTab }}>
       {children}
