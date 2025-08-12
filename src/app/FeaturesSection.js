@@ -7,7 +7,7 @@ export default function HeroSection() {
   const { selectedTab: tab } = useTab();
 
   return (
-    <section className="w-full bg-[#eaf4fa] py-[100px] flex flex-col items-center md:px-48">
+    <section className="w-full bg-[#eaf4fa] py-[80px] md:py-[100px] flex flex-col items-center md:px-32 xl:px-48">
       {/* Heading */}
       <div className="w-full max-w-[900px] mx-auto text-center mb-12 px-6 md:px-0">
         <h2 className="text-3xl md:text-[42px] font-bold text-[#006C86] mb-2 leading-tight tracking-tight">
@@ -21,17 +21,17 @@ export default function HeroSection() {
       </div>
 
       {/* Features */}
-      <div className="w-full max-w-[1400px] flex flex-col gap-16 px-4 md:px-0 mx-auto">
+      <div className="w-full max-w-[1200px] xl:max-w-[1400px] flex flex-col gap-12 md:gap-16 px-4 md:px-0 mx-auto">
         {tab === "enterprise" ? (
           <>
             {/* Enterprise Feature 1 - Live Coding Environment */}
             <div className="w-full flex flex-col md:flex-row md:items-center gap-8">
               {/* Illustration */}
-              <div className="flex-1 flex justify-center items-center pr-8">
-                <Image src="/live-coding.png" alt="Live Coding Environment" width={557} height={447} className="max-w-full h-auto" />
+              <div className="flex-1 flex justify-center items-center md:pr-4 xl:pr-8">
+                <Image src="/live-coding.png" alt="Live Coding Environment" width={680} height={550} className="max-w-full h-auto object-contain" priority />
               </div>
               {/* Content */}
-              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-8">
+              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-6 md:p-8">
                 <h3 className="font-bold text-[28px] leading-[50px] text-[#006C86] mb-4" style={{fontFamily: 'Lexend', fontWeight: 700, letterSpacing: '0%'}}>Live Coding Environment</h3>
                 <p className="text-[#555] text-sm md:text-[16px] mb-6 leading-normal text-center md:text-left">
                   With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end.
@@ -45,11 +45,11 @@ export default function HeroSection() {
             {/* Enterprise Feature 2 - HD Video Interviews */}
             <div className="w-full flex flex-col md:flex-row-reverse md:items-center gap-8">
               {/* Illustration */}
-              <div className="flex-1 flex justify-center items-center pl-8">
-                <Image src="/hd-video.png" alt="HD Video Interviews" width={557} height={447} className="max-w-full h-auto" />
+              <div className="flex-1 flex justify-center items-center md:pl-4 xl:pl-8">
+                <Image src="/hd-video.png" alt="HD Video Interviews" width={680} height={550} className="max-w-full h-auto object-contain" priority />
               </div>
               {/* Content */}
-              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-8 md:ml-8">
+              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-6 md:p-8 md:mr-4 xl:mr-8">
                 <h3 className="font-bold text-[28px] leading-[50px] text-[#006C86] mb-4" style={{fontFamily: 'Lexend', fontWeight: 700, letterSpacing: '0%'}}>HD Video Interviews</h3>
                 <p className="text-[#555] text-sm md:text-[16px] mb-6 leading-normal text-center md:text-left">
                   With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end.
@@ -63,11 +63,11 @@ export default function HeroSection() {
             {/* Enterprise Feature 3 - Expert Interview Network */}
             <div className="w-full flex flex-col md:flex-row md:items-center gap-8">
               {/* Illustration */}
-              <div className="flex-1 flex justify-center items-center pr-8">
-                <Image src="/expert-network.png" alt="Expert Interview Network" width={557} height={447} className="max-w-full h-auto" />
+              <div className="flex-1 flex justify-center items-center md:pr-4 xl:pr-8">
+                <Image src="/expert-network.png" alt="Expert Interview Network" width={680} height={550} className="max-w-full h-auto object-contain" priority />
               </div>
               {/* Content */}
-              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-8">
+              <div className="flex-1 text-center md:text-left flex flex-col justify-center items-center md:items-start p-6 md:p-8">
                 <h3 className="font-bold text-[28px] leading-[50px] text-[#006C86] mb-4" style={{fontFamily: 'Lexend', fontWeight: 700, letterSpacing: '0%'}}>Expert Interview Network</h3>
                 <p className="text-[#555] text-sm md:text-[16px] mb-6 leading-normal text-center md:text-left">
                   With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end.
