@@ -32,28 +32,31 @@ export default function CandidatePage() {
     >
       <Navbar />
       
-      {/* Hero Section with only text content - Remove extra spacing */}
-      <div className="relative z-10" style={{marginLeft: '-1rem', marginRight: '-1rem', marginTop: '-7rem'}}>
-        <HeroSection 
-          showTabs={false}
-          content={candidateContent}
-          hideImageSection={true}
-          className="bg-transparent min-h-[70vh] flex items-center py-0"
-        />
-      </div>
-      
-      {/* Independent Hero Image Section - Extended height to show full image */}
-      <div className="absolute top-0 left-0 right-0 h-[100vh] overflow-visible pointer-events-none">
-        {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
-        <div className="absolute top-[58%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[540px] md:h-[456px] lg:w-[675px] lg:h-[570px] xl:w-[758px] xl:h-[639px]">
-          <Image 
-            src="/candidate-hero.png" 
-            alt="Woman with laptop" 
-            width={758} 
-            height={639} 
-            className="w-full h-full object-contain"
-            priority 
+      {/* Hero Section Container - 80% Viewport Height */}
+      <div className="relative h-[100vh] max-h-[100vh] flex flex-col">
+        {/* Hero Section with only text content */}
+        <div className="relative z-10 flex-1 flex items-start pt-20" style={{marginLeft: '-1rem', marginRight: '-1rem'}}>
+          <HeroSection 
+            showTabs={false}
+            content={candidateContent}
+            hideImageSection={true}
+            className="bg-transparent w-full h-full flex items-start py-0"
           />
+        </div>
+        
+        {/* Independent Hero Image Section - Positioned absolutely within hero container */}
+        <div className="absolute top-0 left-0 right-0 bottom-0 overflow-visible pointer-events-none">
+          {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
+          <div className="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[540px] md:h-[456px] lg:w-[675px] lg:h-[570px] xl:w-[758px] xl:h-[639px]">
+            <Image 
+              src="/candidate-hero.png" 
+              alt="Woman with laptop" 
+              width={758} 
+              height={639} 
+              className="w-full h-full object-contain"
+              priority 
+            />
+          </div>
         </div>
       </div>
       
@@ -232,11 +235,11 @@ export default function CandidatePage() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="px-8 lg:px-12 py-8 lg:py-12 flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-lg lg:text-2xl font-bold text-[#1D6C86] mb-6">
+            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
+              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6 leading-tight">
                 Trusted Referrals — Get Noticed by the Right Companies
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
                 Mapkie connects you with interviewers who&apos;ve assessed your skills. Their trusted referrals give your profile credibility and visibility.
               </p>
               
@@ -248,7 +251,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Referrals by professionals who&apos;ve interviewed and assessed you
                   </p>
                 </div>
@@ -259,7 +262,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Get referred by trusted professionals in your field
                   </p>
                 </div>
@@ -270,7 +273,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Boost your visibility and credibility for serious roles
                   </p>
                 </div>
@@ -297,16 +300,16 @@ export default function CandidatePage() {
       </div>
 
       {/* Second Feature Section - Resume Build */}
-      <div className="relative z-10 py-20 bg-[#E8F0F3]">
+      <div className="relative z-10 py-16 bg-[#E8F0F3]">
         <div className="max-w-7xl mx-auto ">
           {/* 50-50 Layout - Content Left, Image Right */}
           <div className="grid lg:grid-cols-2 gap-10">
             {/* Left Side - Content */}
-            <div className="px-8 lg:px-12 py-8 lg:py-12 flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-lg lg:text-2xl font-bold text-[#1D6C86] mb-6">
+            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
+              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6">
                 Resume Build with Expert guidance
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
                 Mapkie helps job seekers create, polish, and optimize resumes to help you craft a resume that reflects your true potential.
               </p>
               
@@ -318,7 +321,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Tailored, personalized, section-by-section support from experienced professionals beyond AI Experts
                   </p>
                 </div>
@@ -329,7 +332,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     ATS-friendly formatting with role-specific language
                   </p>
                 </div>
@@ -340,7 +343,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Real feedback to refine your tone, structure, and impact
                   </p>
                 </div>
@@ -379,7 +382,7 @@ export default function CandidatePage() {
       </div>
 
       {/* Third Feature Section - Mock Interviews */}
-      <div className="relative z-10 py-20 bg-[#E8F0F3]">
+      <div className="relative z-10 py-16 bg-[#E8F0F3]">
         <div className="max-w-7xl  mx-auto">
           {/* 50-50 Layout - Image Left, Content Right */}
           <div className="grid lg:grid-cols-2 gap-12">
@@ -396,11 +399,11 @@ export default function CandidatePage() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="px-8 lg:px-12 py-8 lg:py-12 flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-lg lg:text-2xl font-bold text-[#1D6C86] mb-6">
+            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
+              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6">
                 Mock Interviews — Practice with Experts
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
                 You work in confidential, practiced, and ready to handle live questions without the stress of being unprepared.
               </p>
               
@@ -412,7 +415,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Practice real interview formats in a low-stress setting
                   </p>
                 </div>
@@ -423,7 +426,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Receive expert feedback on strengths and improvement areas
                   </p>
                 </div>
@@ -434,7 +437,7 @@ export default function CandidatePage() {
                       <polyline points="20,6 9,17 4,12"></polyline>
                     </svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-sm">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
                     Be better prepared for coding rounds, and behavioral questions
                   </p>
                 </div>
