@@ -4,6 +4,7 @@ import BenefitsSection from "../BenefitsSection";
 import ResultsSection from "../ResultsSection";
 import TestimonialSection from "../TestimonialSection";
 import Image from "next/image";
+import Link from "next/link";
 
 const candidateContent = {
   headline: (
@@ -106,18 +107,15 @@ export default function CandidatePage() {
               </p>
               
               <div className="flex justify-start mt-auto">
-                <button
-                  className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
+                <Link href="/referral" className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid" style={{
                     boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
                     letterSpacing: "0.5px",
                     borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
                     background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
                     color: "#fff"
-                  }}
-                >
+                  }}>
                   Find Reference
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -140,7 +138,8 @@ export default function CandidatePage() {
               </p>
               
               <div className="flex justify-start mt-auto">
-                <button
+                <Link
+                  href="/referral?type=resume"
                   className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
                   style={{
                     boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
@@ -151,7 +150,7 @@ export default function CandidatePage() {
                   }}
                 >
                   Create Resume
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -173,7 +172,8 @@ export default function CandidatePage() {
               </p>
               
               <div className="flex justify-start mt-auto">
-                <button
+                <Link
+                  href="/referral?type=mock"
                   className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
                   style={{
                     boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
@@ -184,7 +184,7 @@ export default function CandidatePage() {
                   }}
                 >
                   Practice Daily
-                </button>
+                </Link>
               </div>
             </div>
           </div>

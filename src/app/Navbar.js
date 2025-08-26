@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Candidate", href: "/candidate" },
   { name: "Pricing", href: "#" },
   { name: "About Us", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Contact", href: "/contact" },
   { name: "Blog", href: "#" },
 ];
 
@@ -35,15 +35,15 @@ export default function Navbar() {
             <LinkComponent
               key={link.name}
               href={link.href}
-              className={`relative px-1.5 py-2 transition-colors ${
+              className={`relative h-full flex items-center px-1.5 transition-colors ${
                 isActive
-                  ? "text-[#007080] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px] after:bg-[#007080] after:rounded"
+                  ? "text-[#007080] after:content-[''] after:absolute after:left-0 after:bottom-[-1px] after:w-full after:h-[3px] after:bg-[linear-gradient(99.23deg,#006C86_0%,#061F34_114.48%)]"
                   : "text-[#030D16] hover:text-[#007080]"
               }`}
               aria-current={isActive ? "page" : undefined}
               style={{
                 fontFamily: 'Lexend, sans-serif',
-                fontWeight: 500,
+                fontWeight: 400,
                 fontStyle: 'normal',
                 fontSize: '18px',
                 lineHeight: '100%',
@@ -85,11 +85,18 @@ export default function Navbar() {
               <LinkComponent
                 key={link.name}
                 href={link.href}
-                className={`py-2 px-4 w-full text-center font-semibold text-[17px] ${
+                className={`py-2 px-4 w-full text-center text-[18px] ${
                   isActive ? "text-[#007080] bg-[#e6f2f2]" : "text-[#1a3c4b] hover:text-[#007080]"
                 }`}
                 onClick={() => setMenuOpen(false)}
-                style={{ fontFamily: "Inter, sans-serif" }}
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontWeight: 400,
+                  fontStyle: 'normal',
+                  fontSize: '18px',
+                  lineHeight: '100%',
+                  letterSpacing: '0%'
+                }}
               >
                 {link.name}
               </LinkComponent>

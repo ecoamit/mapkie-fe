@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useTab } from "./TabContext";
+import PropTypes from "prop-types";
 
 export default function HeroSection({ 
   showTabs = true, 
@@ -29,19 +30,7 @@ export default function HeroSection({
           {showTabs && (
             <div className="w-full max-w-[420px] mx-auto md:mx-0 mb-6">
               <div className="flex relative text-base md:text-[16px] font-medium items-center select-none">
-                <button
-                  className={`flex-1 text-center pb-2 transition-colors ${
-                    tab === "enterprise" ? "text-[#1D6C86]" : "text-[#030D16]"
-                  }`}
-                  style={{ position: 'relative', zIndex: 2 }}
-                  onClick={() => setTab("enterprise")}
-                >
-                  ENTERPRISE
-                  {/* Inactive underline */}
-                  {tab !== "enterprise" && (
-                    <span className="block absolute left-1 -translate-x-1 bottom-0 h-[1.5px] bg-[#C4D3DB]" style={{width: '90%', zIndex: 5, left: '50%', transform: 'translateX(-50%)'}} />
-                  )}
-                </button>
+                {/* Candidate on the left */}
                 <button
                   className={`flex-1 text-center pb-2 transition-colors ${
                     tab === "candidate" ? "text-[#1D6C86]" : "text-[#030D16]"
@@ -55,11 +44,25 @@ export default function HeroSection({
                     <span className="block absolute left-1 -translate-x-1 bottom-0 h-[1.5px] bg-[#C4D3DB]" style={{width: '90%', zIndex: 5, left: '50%', transform: 'translateX(-50%)'}} />
                   )}
                 </button>
+                {/* Enterprise on the right */}
+                <button
+                  className={`flex-1 text-center pb-2 transition-colors ${
+                    tab === "enterprise" ? "text-[#1D6C86]" : "text-[#030D16]"
+                  }`}
+                  style={{ position: 'relative', zIndex: 2 }}
+                  onClick={() => setTab("enterprise")}
+                >
+                  ENTERPRISE
+                  {/* Inactive underline */}
+                  {tab !== "enterprise" && (
+                    <span className="block absolute left-1 -translate-x-1 bottom-0 h-[1.5px] bg-[#C4D3DB]" style={{width: '90%', zIndex: 5, left: '50%', transform: 'translateX(-50%)'}} />
+                  )}
+                </button>
                 {/* Active tab underline */}
                 <div
                   className="absolute bottom-0 h-[3px] bg-[#1D6C86] z-10 transition-all duration-300"
                   style={{
-                    left: tab === "enterprise" ? "5%" : "55%",
+                    left: tab === "candidate" ? "5%" : "55%",
                     width: "40%"
                   }}
                 />
@@ -257,3 +260,15 @@ export default function HeroSection({
     </section>
   );
 }
+
+HeroSection.propTypes = {
+  showTabs: PropTypes.bool,
+  content: PropTypes.shape({
+    headline: PropTypes.node,
+    subheadline: PropTypes.node,
+    buttonText: PropTypes.node,
+  }),
+  heroImage: PropTypes.string,
+  className: PropTypes.string,
+  hideImageSection: PropTypes.bool,
+};
