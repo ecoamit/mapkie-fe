@@ -1,11 +1,82 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 
 export default function FormSection({ variant = "referral" }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const fileRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [dragOver, setDragOver] = useState(false);
+  const [fileError, setFileError] = useState("");
+
+  const validateFile = (file) => {
+    if (!file) return "";
+    const allowed = ["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/plain"];
+    if (file.size > 20 * 1024 * 1024) return "File too large (max 20MB)";
+    if (!allowed.includes(file.type) && !/\.(pdf|doc|docx|txt)$/i.test(file.name)) return "Unsupported file type";
+    return "";
+  };
+
+  const handleFiles = useCallback((fileList) => {
+    const file = fileList?.[0];
+    if (!file) return;
+    const err = validateFile(file);
+    setFileError(err);
+    if (!err) setSelectedFile(file);
+  }, []);
+
+  const onFileChange = (e) => {
+    handleFiles(e.target.files);
+  };
+  const onRemoveFile = () => { setSelectedFile(null); setFileError(""); if (fileRef.current) fileRef.current.value = ""; };
+  const onDragOver = (e) => { e.preventDefault(); e.stopPropagation(); setDragOver(true); };
+  const onDragLeave = (e) => { e.preventDefault(); e.stopPropagation(); setDragOver(false); };
+  const onDrop = (e) => { e.preventDefault(); e.stopPropagation(); setDragOver(false); handleFiles(e.dataTransfer.files); };
+  const triggerFile = () => { fileRef.current?.click(); };
+
+  function getVal(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : "";
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    if (loading) return;
+    const fullName = getVal("fullName");
+    const email = getVal("email");
+    if (!fullName || !email) {
+      setError("Full Name and Email are required");
+      return;
+    }
+    const file = selectedFile;
+    if (file) {
+      const vf = validateFile(file);
+      if (vf) { setError(vf); return; }
+    }
+    const fd = new FormData();
+    fd.append("variant", variant);
+    ["fullName","email","phone","position","jobRole","jobId","resumeLink","company","jobPosting","interviewType","experience"].forEach(k=>{
+      const v = getVal(k);
+      if (v) fd.append(k, v);
+    });
+    if (file) fd.append("resume", file);
+    try {
+      setLoading(true);
+      const res = await fetch("/api/form-submit", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Submission failed");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   const cfg = useMemo(() => {
     const shared = {
@@ -145,7 +216,7 @@ export default function FormSection({ variant = "referral" }) {
             <div className="mt-6 md:mt-8 lg:mt-10 mx-auto max-w-3xl w-full">
               <form
                 className="bg-white rounded-2xl shadow-[0_14px_40px_rgba(6,31,52,0.10)] border border-[#E6ECF0] px-5 sm:px-6 md:px-8 lg:px-10 py-6 md:py-8 max-h-[70vh] overflow-y-auto md:max-h-none"
-                onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                onSubmit={handleSubmit}
               >
                 <div>
                   <h3 className="text-[18px] md:text-[20px] font-semibold text-[#0D2A3F]">{cfg.formTitle}</h3>
@@ -222,33 +293,40 @@ export default function FormSection({ variant = "referral" }) {
                 {/* Upload */}
                 {cfg.upload && (
                   <div className="mt-4">
-                    <label htmlFor="resume" className="block text-[12px] text-[#39586A] mb-1.5">Attach Resume (PDF/DOC)</label>
-                    <div className="flex items-center gap-3">
-                      <label htmlFor="resume" className="flex-1 group cursor-pointer" aria-label="Upload resume">
-                        <input id="resume" type="file" className="hidden" />
-                        <div className="flex items-center gap-3 h-[54px] rounded-md border border-dashed border-[#C8D7E0] px-4">
+                    <label htmlFor="resume" className="block text-[12px] text-[#39586A] mb-1.5">Attach Resume (PDF/DOC/TXT)</label>
+                    <div
+                      onDragOver={onDragOver}
+                      onDragLeave={onDragLeave}
+                      onDrop={onDrop}
+                      className={`relative rounded-md border px-4 pt-3 pb-3 transition-colors ${dragOver ? 'border-[#1D6C86] bg-[#F0FAFD]' : 'border-dashed border-[#C8D7E0]'} `}
+                    >
+                      <input id="resume" ref={fileRef} type="file" accept=".pdf,.doc,.docx,.txt" className="hidden" onChange={onFileChange} />
+                      {!selectedFile && (
+                        <div className="flex items-center gap-3">
                           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#F4F8FA] border border-[#E6EEF3]">
                             <Image src="/file.svg" alt="file" width={18} height={18} />
                           </div>
-                          <div className="flex-1">
-                            <p className="text-[13px] text-[#577287] leading-tight">Drag & Drop files here or upload</p>
-                            <p className="text-[11px] text-[#8FA4B1] leading-tight">File Size below 20MB</p>
+                          <div className="flex-1 select-none">
+                            <p className="text-[13px] text-[#577287] leading-tight">Drag & Drop file here or <button type="button" onClick={triggerFile} className="text-[#1D6C86] underline">browse</button></p>
+                            <p className="text-[11px] text-[#8FA4B1] leading-tight">PDF, DOC, DOCX, TXT. Max 20MB.</p>
                           </div>
+                          <button type="button" onClick={triggerFile} className="shrink-0 h-[40px] px-5 rounded-full text-[13px] font-medium border border-[#006C86] text-[#006C86] hover:bg-[#006C86] hover:text-white transition-colors">Upload</button>
                         </div>
-                      </label>
-                      <button
-                        type="button"
-                        className="shrink-0 h-[54px] px-6 rounded-full text-[14px] font-medium focus:outline-none"
-                        style={{
-                          border: "1px solid transparent",
-                          background:
-                            "linear-gradient(#ffffff,#ffffff) padding-box, linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) border-box",
-                          color: "#006C86",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-                        }}
-                      >
-                        Upload
-                      </button>
+                      )}
+                      {selectedFile && (
+                        <div className="flex items-center gap-4 pr-2">
+                          <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#E9F4F7] border border-[#D2E5EC]">
+                            <Image src="/file.svg" alt="file" width={22} height={22} />
+                          </div>
+                          <div className="flex-1 overflow-hidden">
+                            <p className="text-[13px] font-medium text-[#0D2A3F] truncate" title={selectedFile.name}>{selectedFile.name}</p>
+                            <p className="text-[11px] text-[#577287]">{(selectedFile.size/1024/1024).toFixed(2)} MB</p>
+                          </div>
+                          <button type="button" onClick={triggerFile} className="text-[12px] px-3 py-1 rounded-full border border-[#006C86] text-[#006C86] hover:bg-[#006C86] hover:text-white transition-colors">Change</button>
+                          <button type="button" onClick={onRemoveFile} aria-label="Remove file" className="text-[12px] px-3 py-1 rounded-full border border-[#D33] text-[#D33] hover:bg-[#D33] hover:text-white transition-colors">Remove</button>
+                        </div>
+                      )}
+                      {fileError && <p className="text-red-600 text-[11px] mt-2" role="alert">{fileError}</p>}
                     </div>
                   </div>
                 )}
@@ -274,10 +352,13 @@ export default function FormSection({ variant = "referral" }) {
                 </p>
 
                 <div className="mt-6">
-                  <button type="submit" className="w-full h-[52px] md:h-[54px] rounded-full text-white text-[14px] font-medium" style={{
+                  {error && <p className="text-red-600 text-[12px] mt-3" role="alert">{error}</p>}
+                <div className="mt-6">
+                  <button disabled={loading} type="submit" className="w-full h-[52px] md:h-[54px] rounded-full text-white text-[14px] font-medium disabled:opacity-60" style={{
                     background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
                     boxShadow: "0 6px 18px rgba(0,0,0,0.10)",
-                  }}>Submit</button>
+                  }}>{loading ? "Submitting..." : "Submit"}</button>
+                </div>
                 </div>
               </form>
             </div>

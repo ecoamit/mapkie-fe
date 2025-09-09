@@ -9,8 +9,10 @@ export const metadata = {
   description: "Get referred by trusted professionals. Share your details and we’ll reach out soon.",
 };
 
-export default function ReferralPage({ searchParams }) {
-  const type = searchParams?.type;
+export default async function ReferralPage({ searchParams }) {
+  // In Next.js 15 searchParams can be a Promise-like; await if necessary
+  const params = await searchParams;
+  const type = params?.type;
   let variant = 'referral';
   if (type === 'resume') variant = 'resume';
   else if (type === 'mock') variant = 'mock';

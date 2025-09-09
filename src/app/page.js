@@ -22,7 +22,7 @@ export default function Home() {
       }}
     >
       <Navbar />
-      <HeroSection />
+  <HeroSection />
         <div className="hidden md:block">
           <Trusted/>
         </div>

@@ -60,9 +60,9 @@ export default function Navbar() {
         <button className="border border-[#007080] text-[#007080] bg-white px-6 py-2 rounded-full font-semibold text-[16px] hover:bg-[#e6f2f2] transition-colors shadow-none">
           Login
         </button>
-        <button className="bg-gradient-to-r from-[#ff8a36] to-[#ffb86c] text-white px-6 py-2 rounded-full font-semibold text-[16px] shadow-md hover:from-[#ff7300] hover:to-[#ff9e36] transition-colors">
+        <Link href="/contact" className="bg-gradient-to-r from-[#ff8a36] to-[#ffb86c] text-white px-6 py-2 rounded-full font-semibold text-[16px] shadow-md hover:from-[#ff7300] hover:to-[#ff9e36] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff8a36]">
           Request Demo
-        </button>
+        </Link>
       </div>
       {/* Mobile Hamburger */}
       <button
@@ -106,9 +106,9 @@ export default function Navbar() {
             <button className="border border-[#007080] text-[#007080] bg-white px-6 py-2 rounded-full font-semibold text-[16px] hover:bg-[#e6f2f2] transition-colors w-full" style={{ fontFamily: "Inter, sans-serif" }}>
               Login
             </button>
-            <button className="bg-gradient-to-r from-[#ff8a36] to-[#ffb86c] text-white px-6 py-2 rounded-full font-semibold text-[16px] shadow-md hover:from-[#ff7300] hover:to-[#ff9e36] transition-colors w-full" style={{ fontFamily: "Inter, sans-serif" }}>
+            <Link href="/contact" className="bg-gradient-to-r from-[#ff8a36] to-[#ffb86c] text-white px-6 py-2 rounded-full font-semibold text-[16px] shadow-md hover:from-[#ff7300] hover:to-[#ff9e36] transition-colors w-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff8a36]" style={{ fontFamily: "Inter, sans-serif" }}>
               Request Demo
-            </button>
+            </Link>
           </div>
         </div>
       )}

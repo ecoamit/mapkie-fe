@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import PropTypes from "prop-types";
 
 export default function CTABanner({ showIllustration = true }) {
@@ -13,9 +14,9 @@ export default function CTABanner({ showIllustration = true }) {
           <h3 className="text-white text-2xl md:text-[32px] font-bold mb-6 md:mb-7 leading-tight max-w-[420px]">
             Ready to transform your technical hiring
           </h3>
-          <button className="bg-white text-[#006C86] px-7 py-2 rounded-full font-bold text-[14px] shadow-none hover:bg-[#e6f2f2] transition-colors w-[170px] text-center">
+          <Link href="/contact" className="bg-white text-[#006C86] px-7 py-2 rounded-full font-bold text-[14px] shadow-none hover:bg-[#e6f2f2] transition-colors w-[170px] text-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]">
             Request Demo
-          </button>
+          </Link>
         </div>
 
         {/* Right: Illustration Layered - toggled by prop */}
@@ -24,7 +25,7 @@ export default function CTABanner({ showIllustration = true }) {
             <Image src="/map.png" alt="Map" width={320} height={220} className="absolute top-[40px] right-[280px] z-0" style={{ objectFit: "contain" }} />
             <Image src="/map-2.png" alt="Map 2" width={120} height={120} className="absolute top-[120px] right-[60px] z-0" style={{ objectFit: "contain" }} />
             <Image src="/map-3.png" alt="Map 3" width={80} height={80} className="absolute top-[200px] right-[150px] z-0" style={{ objectFit: "contain" }} />
-            <Image src="/female-interviewer.png" alt="Interviewer" width={280} height={340} className="absolute bottom-0 right-[180px] z-20" style={{ objectFit: "contain", overflow: "visible" }} />
+            <Image src="/female-interviewer.svg" alt="Interviewer" width={280} height={340} className="absolute bottom-0 right-[180px] z-20" style={{ objectFit: "contain", overflow: "visible" }} />
             <Image src="/pin.png" alt="Pin" width={38} height={38} className="absolute top-[90px] right-[500px] z-30" />
             <Image src="/pin.png" alt="Pin" width={32} height={32} className="absolute top-[120px] right-[120px] z-30" />
             <Image src="/pin.png" alt="Pin" width={28} height={28} className="absolute top-[220px] right-[160px] z-30" />

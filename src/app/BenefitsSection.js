@@ -9,17 +9,17 @@ export default function BenefitsSection() {
   // Content for Individual/Candidate tab
   const candidateBenefits = [
     {
-      img: "/resume.png",
+      img: "/resume.svg",
       title: "Resume That Stands Out",
       desc: "Get certified technical interview evaluations that add real value to your resume.",
     },
     {
-      img: "/feedback.png",
+      img: "/feedback.svg",
       title: "Real-Time Feedback",
       desc: "Receive instant expert insights to help improve your performance after every interview.",
     },
     {
-      img: "/confidence-building.png",
+      img: "/confidence-building.svg",
       title: "Confidence Building",
       desc: "Mock interviews in a professional setting help candidates build confidence for real employer interviews.",
     },
@@ -28,17 +28,17 @@ export default function BenefitsSection() {
   // Content for Enterprise tab
   const enterpriseBenefits = [
     {
-      img: "/save-time.png",
+      img: "/save-time.svg",
       title: "Save Engineering Time",
       desc: "Let experts handle your technical interviews while your team focuses on building.",
     },
     {
-      img: "/image-2.png",
+      img: "/expert-interviewers.svg",
       title: "Expert Interviewers",
       desc: "Let experts handle your technical interviews while your team focuses on building.",
     },
     {
-      img: "/evaluation.png",
+      img: "/evaluation.svg",
       title: "Comprehensive Evaluation",
       desc: "Let experts handle your technical interviews while your team focuses on building.",
     },

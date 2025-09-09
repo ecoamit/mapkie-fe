@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useTab } from "./TabContext";
 import PropTypes from "prop-types";
 
@@ -8,19 +9,22 @@ export default function HeroSection({
   content = null, 
   heroImage = null,
   className = "",
-  hideImageSection = false
+  hideImageSection = false,
+  hideBackgroundWave = false // new prop
 }) {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
 
   return (
     <section
-      className={`relative w-full min-h-[calc(100svh-80px)] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] 2xl:min-h-[850px] max-h-screen bg-[#E8F0F3] overflow-hidden flex items-center py-6 md:py-8 xl:py-10 2xl:py-12 pl-4 md:pl-6 xl:pl-10 pr-0 md:pt-0 ${className}`}
+      className={`relative w-full min-h-[calc(100svh-80px)] bg-[#E8F0F3] overflow-hidden flex items-start pt-10 md:pt-12 xl:pt-14 2xl:pt-16 pb-2 md:pb-4 xl:pb-6 2xl:pb-6 pl-4 md:pl-6 xl:pl-10 pr-0 ${className}`}
     >
 
       {/* Background Image */}
-      <div className="absolute bottom-[-600px] md:bottom-[-380px] xl:bottom-[-460px] inset-0 z-0">
+  {!hideBackgroundWave && (
+      <div className="absolute bottom-[-520px] md:bottom-[-340px] xl:bottom-[-400px] inset-0 z-0">
         <Image src="/wave.svg" alt="Wave background" fill style={{objectFit:'stretch', opacity:0.60}} />
       </div>
+  )}
 
       {/* Main Content Container */}
       <div className="relative w-full max-w-[1600px] flex flex-col md:flex-row items-start z-10 mx-4 sm:mx-8 md:mx-8 xl:mx-16 2xl:mx-32 px-4 md:px-0">
@@ -111,8 +115,9 @@ export default function HeroSection({
           ) : null}
           {/* CTA Button */}
           <div className="flex justify-center md:justify-start">
-            <button
-              className="text-white px-8 py-3 md:px-10 md:py-3 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] flex items-center justify-center bg-transparent border border-solid"
+            <Link
+              href="/contact"
+              className="text-white px-8 py-3 md:px-10 md:py-3 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] inline-flex items-center justify-center bg-transparent border border-solid hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]"
               style={{
                 boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
                 letterSpacing: "0.5px",
@@ -122,7 +127,7 @@ export default function HeroSection({
               }}
             >
               {content?.buttonText || "Request Demo"}
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -161,20 +166,17 @@ export default function HeroSection({
                   <div className="relative w-full h-[300px] flex items-center justify-center">
                     {/* Man running for candidate tab */}
                     <div className="relative">
-                      <Image src="/man-running.png" alt="Man running" width={280} height={200} priority />
+                      <Image src="/man-running.svg" alt="Man running" width={280} height={200} priority />
                     </div>
-                    {/* Mapkie logo circle for mobile */}
-                    <div className="absolute bottom-8 left-8 bg-white rounded-full flex items-center justify-center shadow-lg w-16 h-16">
-                      <Image src="/mapkie-logo.png" alt="Mapkie Logo" width={40} height={40} />
+                    {/* Mapkie logo (self-contained with its own background in SVG) */}
+                    <div className="absolute bottom-8 left-8">
+                      <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={56} height={56} priority />
                     </div>
-                    {/* Company logos for mobile */}
-                    <div className="absolute top-4 right-8 flex flex-col gap-3">
-                      <div className="bg-white rounded-full shadow-md flex items-center justify-center w-10 h-10">
-                        <Image src="/amazon.png" alt="Amazon" width={24} height={24} />
-                      </div>
-                      <div className="bg-white rounded-full shadow-md flex items-center justify-center w-10 h-10">
-                        <Image src="/google.png" alt="Google" width={24} height={24} />
-                      </div>
+                    {/* Company logos for mobile (SVGs already styled) */}
+                    <div className="absolute top-4 right-8 flex flex-col gap-4 items-center">
+                      <Image src="/amazon-logo.svg" alt="Amazon" width={40} height={40} priority />
+                      <Image src="/google-logo.svg" alt="Google" width={40} height={40} priority />
+                      <Image src="/headshot.svg" alt="Headshot" width={40} height={40} priority />
                     </div>
                   </div>
                 )
@@ -182,7 +184,7 @@ export default function HeroSection({
             </div>
             
             {/* Desktop Illustration */}
-            <div className="hidden md:block relative flex-1 min-w-[500px] xl:min-w-[700px] h-[450px] lg:h-[500px] xl:h-[550px] right-0" style={{background: 'url(/dotted-bg.png) left top / cover no-repeat',marginTop: '40px', marginBottom: '-40px'}}>
+            <div className="hidden md:block relative flex-1 min-w-[500px] xl:min-w-[700px] h-[400px] lg:h-[460px] xl:h-[500px] right-0" style={{background: 'url(/dotted-bg.svg) left top / cover no-repeat',marginTop: '32px', marginBottom: '-20px'}}>
               {heroImage ? (
                 <div className="absolute left-[0px] bottom-[-60px] md:bottom-[-80px] lg:bottom-[-100px] xl:bottom-[-140px] z-10 flex items-center justify-center w-full h-full">
                   <Image 
@@ -198,7 +200,7 @@ export default function HeroSection({
                 tab === "enterprise" ? (
                   <>
                     {/* Person illustration - positioned on the left with better spacing and bottom alignment */}
-                    <div className="absolute left-[-522px] md:left-[-446px] lg:left-[-490px] xl:left-[-657px] bottom-[-106px] md:bottom-[-106] lg:bottom-[-106px] xl:bottom-[-106px] z-10">
+                    <div className="absolute left-[-522px] md:left-[-446px] lg:left-[-490px] xl:left-[-567px] bottom-[-72px] md:bottom-[-72px] lg:bottom-[-72px] xl:bottom-[-134px] z-10">
                       <Image 
                         src="/interviewer-on-laptop.svg" 
                         alt="Interviewer" 
@@ -210,26 +212,26 @@ export default function HeroSection({
                     </div>
 
                     {/* Job Profiles Card */}
-                    <div className="absolute left-[80px] xl:left-[130px] top-[-20px] xl:top-[-40px] z-20 overflow-hidden">
-                      <Image src="/job-profiles-card.png" alt="Job Profiles" width={550} height={480} className="xl:w-[700px] xl:h-[620px]" />
+                    <div className="absolute left-[80px] xl:left-[130px] top-[-10px] xl:top-[-24px] z-20 overflow-hidden">
+                      <Image src="/job-profiles-card.svg" alt="Job Profiles" width={550} height={480} className="xl:w-[700px] xl:h-[620px]" />
                     </div>
 
                     {/* Pipeline Status Card (replacing small status card) */}
-                    <div className="absolute right-[20px] xl:right-[35px] top-[-40px] xl:top-[-60px] z-30 overflow-hidden">
-                      <Image src="/pipeline-status-card.png" alt="Pipeline Status" width={280} height={220} className="xl:w-[350px] xl:h-[280px]" />
+                    <div className="absolute right-[20px] xl:right-[35px] top-[-30px] xl:top-[-45px] z-30 overflow-hidden">
+                      <Image src="/pipeline-status-card.svg" alt="Pipeline Status" width={280} height={220} className="xl:w-[350px] xl:h-[280px]" />
                     </div>
 
                     {/* Upload Resume Card (replacing metrics card) */}
-                    <div className="absolute left-[10px] xl:left-[20px] bottom-[60px] xl:bottom-[100px] z-30 overflow-hidden">
-                      <Image src="/upload-resume-card.png" alt="Upload Resume" width={320} height={260} className="xl:w-[400px] xl:h-[320px]" />
+                    <div className="absolute left-[10px] xl:left-[20px] bottom-[40px] xl:bottom-[70px] z-30 overflow-hidden">
+                      <Image src="/upload-resume-card.svg" alt="Upload Resume" width={320} height={260} className="xl:w-[400px] xl:h-[320px]" />
                     </div>
                   </>
                 ) : (
                   <>
                     {/* Man running illustration */}
-                    <div className="absolute left-[0px] bottom-[-60px] md:bottom-[-80px] lg:bottom-[-100px] xl:bottom-[-140px] z-10">
+                    <div className="absolute left-[0px] bottom-[-40px] md:bottom-[-60px] lg:bottom-[-70px] xl:bottom-[-90px] z-10">
                       <Image 
-                        src="/man-running.png" 
+                        src="/man-running.svg" 
                         alt="Man running" 
                         width={400} 
                         height={460} 
@@ -237,18 +239,15 @@ export default function HeroSection({
                         priority 
                       />
                     </div>
-                    {/* Mapkie logo circle */}
-                    <div className="absolute left-[-150px] xl:left-[-200px] bottom-[80px] xl:bottom-[120px] z-20 bg-white rounded-full flex items-center justify-center shadow-lg w-[80px] h-[80px] xl:w-[100px] xl:h-[100px]">
-                      <Image src="/mapkie-logo.png" alt="Mapkie Logo" width={48} height={48} className="xl:w-[60px] xl:h-[60px]" />
+                    {/* Mapkie logo (SVG already includes background) */}
+                    <div className="absolute left-[-150px] xl:left-[-200px] bottom-[60px] xl:bottom-[90px] z-20">
+                      <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={92} height={92} className="xl:w-[110px] xl:h-[110px]" priority />
                     </div>
-                    {/* Company avatars */}
-                    <div className="absolute left-[420px] lg:left-[500px] xl:left-[580px] top-[50px] xl:top-[70px] z-30 flex flex-col gap-4 xl:gap-6 items-center">
-                      <div className="bg-white rounded-full shadow-md flex items-center justify-center w-[56px] h-[56px] xl:w-[64px] xl:h-[64px]">
-                        <Image src="/amazon.png" alt="Amazon" width={32} height={32} className="xl:w-[40px] xl:h-[40px]" />
-                      </div>
-                      <div className="bg-white rounded-full shadow-md flex items-center justify-center w-[56px] h-[56px] xl:w-[64px] xl:h-[64px]">
-                        <Image src="/amazon.png" alt="Amazon" width={32} height={32} className="xl:w-[40px] xl:h-[40px]" />
-                      </div>
+                    {/* Company logos (desktop) */}
+                    <div className="absolute left-[420px] lg:left-[520px] xl:left-[600px] top-[40px] xl:top-[70px] z-30 flex flex-col gap-6 items-center">
+                      <Image src="/amazon-logo.svg" alt="Amazon" width={64} height={64} className="xl:w-[72px] xl:h-[72px]" priority />
+                      <Image src="/google-logo.svg" alt="Google" width={64} height={64} className="xl:w-[72px] xl:h-[72px]" priority />
+                      <Image src="/headshot.svg" alt="Headshot" width={64} height={64} className="xl:w-[72px] xl:h-[72px]" priority />
                     </div>
                   </>
                 )
@@ -271,4 +270,5 @@ HeroSection.propTypes = {
   heroImage: PropTypes.string,
   className: PropTypes.string,
   hideImageSection: PropTypes.bool,
+  hideBackgroundWave: PropTypes.bool,
 };

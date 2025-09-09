@@ -41,3 +41,29 @@ html, body {
     transform: translateX(-1000px); /* Move by width of 5 logos (5 * 200px) */
   }
 }
+
+/* Ensure all interactive elements show pointer cursor */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a[href],
+[role="button"],
+[role="tab"],
+[role="link"],
+summary {
+  cursor: pointer;
+}
+
+/* Disabled / aria-disabled elements should not show pointer */
+button[disabled],
+button:disabled,
+input[disabled],
+input:disabled,
+[aria-disabled="true"],
+button[disabled]:hover,
+button:disabled:hover {
+  cursor: not-allowed;
+}
+
+/* Utility class if needed in JSX: className="cursor-pointer" already via Tailwind */
