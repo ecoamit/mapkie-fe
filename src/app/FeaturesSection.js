@@ -62,8 +62,9 @@ function FeatureBlock({ image, alt, title, body, reverse = false, index = 0, hre
   );
 }
 
-export default function FeaturesSection() {
+export default function FeaturesSection({ forceEnterprise = false }) {
   const { selectedTab: tab } = useTab();
+  const effectiveTab = forceEnterprise ? 'enterprise' : tab;
 
   const enterpriseFeatures = [
     {
@@ -110,7 +111,7 @@ export default function FeaturesSection() {
     }
   ];
 
-  const features = tab === "enterprise" ? enterpriseFeatures : candidateFeatures;
+  const features = effectiveTab === "enterprise" ? enterpriseFeatures : candidateFeatures;
 
   return (
     <section className="relative z-10 py-20 bg-[#E8F0F3]">
@@ -126,7 +127,7 @@ export default function FeaturesSection() {
               backgroundClip: "text"
             }}
           >
-            {tab === 'enterprise' ? (
+            {effectiveTab === 'enterprise' ? (
               <>One Platform for All of Your Technical<br />Assessment & Interview Needs</>
             ) : (
               <>Everything You Need to Get Hired —<br />All in One Platform</>
@@ -158,4 +159,8 @@ FeatureBlock.propTypes = {
   reverse: PropTypes.bool,
   index: PropTypes.number,
   href: PropTypes.string
+};
+
+FeaturesSection.propTypes = {
+  forceEnterprise: PropTypes.bool
 };

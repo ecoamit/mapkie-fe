@@ -1,22 +1,28 @@
 import Navbar from "../Navbar";
 import HeroSection from "../HeroSection";
+import Image from "next/image";
+import FeaturesSection from "../FeaturesSection";
+import BenefitsSection from "../BenefitsSection";
+import Trusted from "../Trusted";
+import ResultsSection from "../ResultsSection";
+import TestimonialSection from "../TestimonialSection";
 
 const enterpriseContent = {
   headline: (
     <>
-      Scale Your <span className="font-bold text-[#1D6C86]">Technical Hiring</span>
+      Bridge the Gap Between
       <br />
-      with Expert <span className="font-bold text-[#1D6C86]">Interviewers</span>
+      <span className="font-bold text-[#1D6C86]">Screening</span> and <span className="font-bold text-[#1D6C86]">Hiring</span>
     </>
   ),
-  subheadline: "Let our expert technical interviewers handle your hiring process while your team focuses on building great products. Reduce time-to-hire and improve candidate quality.",
-  buttonText: "Book a Demo"
+  subheadline: "Mapkie empowers companies to build stronger teams and individuals to reach their potential.",
+  buttonText: "Request Demo"
 };
 
 export default function EnterprisePage() {
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen overflow-x-hidden"
       style={{
         background: "#f6f8fa",
         fontFamily: "Lexend, sans-serif",
@@ -29,21 +35,37 @@ export default function EnterprisePage() {
       }}
     >
       <Navbar />
-      <HeroSection 
-        showTabs={false}
-        content={enterpriseContent}
-        heroImage="/interviewer-on-laptop.svg"
-        className="bg-gradient-to-br from-blue-50 to-indigo-50"
-      />
-      {/* You can add more enterprise-specific sections here */}
-      <div className="py-16 text-center">
-        <h2 className="text-2xl font-bold text-[#1D6C86] mb-4">
-          Enterprise Solutions
-        </h2>
-        <p className="text-[#384C5D] max-w-2xl mx-auto">
-          This is where you can add more enterprise-specific content, features, and sections.
-        </p>
-      </div>
+     <div className="relative h-[100vh] max-h-[100vh] flex flex-col">
+             {/* Hero Section with only text content */}
+             <div className="relative z-10 flex-1 flex items-start pt-20" style={{marginLeft: '-1rem', marginRight: '-1rem'}}>
+               <HeroSection 
+                 showTabs={false}
+                 content={enterpriseContent}
+                 hideImageSection={true}
+                 className="bg-transparent w-full h-full flex items-start py-0"
+               />
+             </div>
+             
+             {/* Independent Hero Image Section - Positioned absolutely within hero container */}
+             <div className="absolute top-0 left-0 right-0 bottom-0 overflow-visible pointer-events-none">
+               {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
+               <div className="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[540px] md:h-[456px] lg:w-[675px] lg:h-[570px] xl:w-[700px] xl:h-[639px]">
+                 <Image 
+                   src="/candidate-hero.png" 
+                   alt="Woman with laptop" 
+                   width={700} 
+                   height={639} 
+                   className="w-full h-full object-contain"
+                   priority 
+                 />
+               </div>
+             </div>
+           </div>
+           <Trusted />
+           <FeaturesSection forceEnterprise />
+           <BenefitsSection forceEnterprise />
+            <ResultsSection />
+            <TestimonialSection />
     </div>
   );
 }

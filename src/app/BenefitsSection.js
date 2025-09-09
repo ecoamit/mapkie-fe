@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useTab } from "./TabContext";
+import PropTypes from "prop-types";
 
-export default function BenefitsSection() {
+export default function BenefitsSection({ forceEnterprise = false }) {
 
   const { selectedTab: tab } = useTab();
+  const effectiveTab = forceEnterprise ? 'enterprise' : tab;
 
   // Content for Individual/Candidate tab
   const candidateBenefits = [
@@ -45,7 +47,7 @@ export default function BenefitsSection() {
   ];
 
   // Select benefits based on active tab
-  const benefits = tab === "enterprise" ? enterpriseBenefits : candidateBenefits;
+  const benefits = effectiveTab === "enterprise" ? enterpriseBenefits : candidateBenefits;
 
   return (
     <section className="w-full bg-white py-[60px] flex flex-col items-center relative overflow-x-hidden">
@@ -88,3 +90,7 @@ export default function BenefitsSection() {
     </section>
   );
 }
+
+BenefitsSection.propTypes = {
+  forceEnterprise: PropTypes.bool
+};

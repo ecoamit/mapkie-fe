@@ -50,15 +50,41 @@ export async function POST(req) {
     const recipients = process.env.RECIPIENT_EMAIL;
 
     if (!smtpHost || !smtpUser || !smtpPass || !recipients) {
+      console.error('Email config missing', { hasHost: !!smtpHost, hasUser: !!smtpUser, hasPass: !!smtpPass, hasRecipients: !!recipients });
       return new Response(JSON.stringify({ error: 'Server email config missing' }), { status: 500 });
+    }
+
+    // Diagnostics (does not log secrets)
+    const debugEnabled = process.env.FORM_DEBUG === '1';
+    if (debugEnabled) {
+      console.log('Form submit diagnostics', {
+        port: smtpPort,
+        secure: smtpPort === 465,
+        runtime: process.env.NEXT_RUNTIME || 'unknown',
+        node: process.version,
+        recipientsCount: recipients.split(',').length,
+      });
     }
 
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465,
-      auth: { user: smtpUser, pass: smtpPass }
+      secure: smtpPort === 465, // Office365: false for 587 (STARTTLS), true only if using 465
+      auth: { user: smtpUser, pass: smtpPass },
+      tls: smtpPort === 587 ? { ciphers: 'SSLv3', rejectUnauthorized: false } : undefined
     });
+
+    // Verify connection/auth before attempting send
+    try {
+      await transporter.verify();
+    } catch (verifyErr) {
+      console.error('SMTP verify failed', {
+        code: verifyErr.code,
+        command: verifyErr.command,
+        message: verifyErr.message
+      });
+      return new Response(JSON.stringify({ error: 'Email transport not ready' }), { status: 500 });
+    }
 
     const lines = [
       `Variant: ${variant}`,
@@ -76,18 +102,28 @@ export async function POST(req) {
 
     const html = `<h2>New Form Submission (${variant})</h2><pre style="font-size:14px;line-height:1.4">${lines.join('\n')}</pre>`;
 
-    await transporter.sendMail({
-      from: `Mapkie Form <${smtpUser}>`,
-      to: recipients,
-      subject: `Mapkie Form Submission - ${variant} - ${fullName}`,
-      text: lines.join('\n'),
-      html,
-      attachments: attachment
-    });
+    try {
+      await transporter.sendMail({
+        from: `Mapkie Form <${smtpUser}>`,
+        to: recipients,
+        subject: `Mapkie Form Submission - ${variant} - ${fullName}`,
+        text: lines.join('\n'),
+        html,
+        attachments: attachment
+      });
+    } catch (sendErr) {
+      console.error('sendMail error', {
+        code: sendErr.code,
+        command: sendErr.command,
+        response: sendErr.response,
+        message: sendErr.message
+      });
+      return new Response(JSON.stringify({ error: 'Failed to send email' }), { status: 500 });
+    }
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
-    console.error('Form submit error', err);
+    console.error('Form submit error', { message: err.message, stack: err.stack });
     return new Response(JSON.stringify({ error: err.message || 'Server error' }), { status: 500 });
   }
 }
