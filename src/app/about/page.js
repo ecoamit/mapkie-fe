@@ -130,8 +130,7 @@ export default function AboutPage() {
       </section>
 
       {/* Reuse existing sections for social proof */}
-  <CoreValuesSection />
-      <BenefitsSection />
+      <CoreValuesSection />
       <ResultsSection />
       <TestimonialSection />
     </div>
