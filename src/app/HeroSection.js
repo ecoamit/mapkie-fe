@@ -184,7 +184,7 @@ export default function HeroSection({
             </div>
             
             {/* Desktop Illustration */}
-            <div className="hidden md:block relative flex-1 min-w-[500px] xl:min-w-[700px] h-[400px] lg:h-[460px] xl:h-[500px] right-0" style={{background: 'url(/dotted-bg.svg) left top / cover no-repeat',marginTop: '32px', marginBottom: '-20px'}}>
+            <div className="hidden md:block relative flex-1 min-w-[500px] xl:min-w-[800px] h-[400px] lg:h-[460px] xl:h-[500px] right-0" style={{background: 'url(/dotted-bg.svg) left top / cover no-repeat',marginTop: '32px', marginBottom: '-20px', marginRight: '-126px' }}>
               {heroImage ? (
                 <div className="absolute left-[0px] bottom-[-60px] md:bottom-[-80px] lg:bottom-[-100px] xl:bottom-[-140px] z-10 flex items-center justify-center w-full h-full">
                   <Image 
@@ -206,7 +206,7 @@ export default function HeroSection({
                         alt="Interviewer" 
                         width={380} 
                         height={240} 
-                        className="md:w-[420px] md:h-[265px] lg:w-[500px] lg:h-[315px] xl:w-[562px] xl:h-[352px] object-contain" 
+                        className="md:w-[420px] md:h-[265px] lg:w-[500px] lg:h-[315px] xl:w-[562px] xl:h-[350px] object-contain" 
                         priority 
                       />
                     </div>
@@ -240,7 +240,7 @@ export default function HeroSection({
                       />
                     </div>
                     {/* Mapkie logo (SVG already includes background) */}
-                    <div className="absolute left-[-150px] xl:left-[-200px] bottom-[60px] xl:bottom-[90px] z-20">
+                    <div className="absolute left-[-150px] xl:left-[-150px] bottom-[200px] xl:bottom-[160px] z-20">
                       <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={92} height={92} className="xl:w-[110px] xl:h-[110px]" priority />
                     </div>
                     {/* Company logos (desktop) */}

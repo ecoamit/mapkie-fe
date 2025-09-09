@@ -3,6 +3,7 @@ import HeroSection from "../HeroSection";
 import BenefitsSection from "../BenefitsSection";
 import TestimonialSection from "../TestimonialSection";
 import ResultsSection from "../ResultsSection";
+import CoreValuesSection from "../CoreValuesSection";
 import Image from "next/image";
 
 const aboutContent = {
@@ -129,6 +130,7 @@ export default function AboutPage() {
       </section>
 
       {/* Reuse existing sections for social proof */}
+  <CoreValuesSection />
       <BenefitsSection />
       <ResultsSection />
       <TestimonialSection />
