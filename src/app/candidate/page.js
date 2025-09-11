@@ -244,7 +244,7 @@ export default function CandidatePage() {
             {/* Left Side - Image */}
             <div className="relative">
               <Image 
-                src="/candidate-feature1.png" 
+                src="/candidate-feature1.svg" 
                 alt="Feature illustration" 
                 width={542} 
                 height={408} 
@@ -388,7 +388,7 @@ export default function CandidatePage() {
             {/* Right Side - Image */}
             <div className="relative">
               <Image 
-                src="/candidate-feature2.png" 
+                src="/candidate-feature2.svg" 
                 alt="Resume building illustration" 
                 width={542} 
                 height={408} 
@@ -408,7 +408,7 @@ export default function CandidatePage() {
             {/* Left Side - Image */}
             <div className="relative">
               <Image 
-                src="/candidate-feature3.png" 
+                src="/candidate-feature3.svg" 
                 alt="Mock interview illustration" 
                 width={545} 
                 height={408} 
