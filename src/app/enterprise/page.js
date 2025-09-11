@@ -6,6 +6,7 @@ import BenefitsSection from "../BenefitsSection";
 import Trusted from "../Trusted";
 import ResultsSection from "../ResultsSection";
 import TestimonialSection from "../TestimonialSection";
+import EnterpriseWorkflow from "../EnterpriseWorkflow";
 
 const enterpriseContent = {
   headline: (
@@ -51,7 +52,7 @@ export default function EnterprisePage() {
                {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
                <div className="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[540px] md:h-[456px] lg:w-[675px] lg:h-[570px] xl:w-[700px] xl:h-[639px]">
                  <Image 
-                   src="/candidate-hero.png" 
+                   src="/candidate-hero.svg" 
                    alt="Woman with laptop" 
                    width={700} 
                    height={639} 
@@ -61,6 +62,7 @@ export default function EnterprisePage() {
                </div>
              </div>
            </div>
+           {/* <EnterpriseWorkflow /> */}
            <Trusted />
            <FeaturesSection forceEnterprise />
            <BenefitsSection forceEnterprise />

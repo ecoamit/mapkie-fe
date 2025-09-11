@@ -1,3 +1,4 @@
+
 import Navbar from "../Navbar";
 import HeroSection from "../HeroSection";
 import BenefitsSection from "../BenefitsSection";
@@ -5,6 +6,24 @@ import ResultsSection from "../ResultsSection";
 import TestimonialSection from "../TestimonialSection";
 import Image from "next/image";
 import Link from "next/link";
+
+const candidateBenefits = [
+  {
+    img: "/candidate-benefit-1.svg",
+    title: "Resume That Stands Out",
+    desc: "Get certified technical interview evaluations that add real value to your resume.",
+  },
+  {
+    img: "/candidate-benefit-2.svg",
+    title: "Real-Time Feedback",
+    desc: "Receive instant expert insights to help improve your performance after every interview.",
+  },
+  {
+    img: "/candidate-benefit-3.svg",
+    title: "Confidence Building",
+    desc: "Mock interviews in a professional setting help candidates build confidence for real employer interviews.",
+  },
+];
 
 const candidateContent = {
   headline: (
@@ -50,7 +69,7 @@ export default function CandidatePage() {
           {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
           <div className="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[540px] md:h-[456px] lg:w-[675px] lg:h-[570px] xl:w-[758px] xl:h-[639px]">
             <Image 
-              src="/candidate-hero.png" 
+              src="/candidate-hero.svg" 
               alt="Woman with laptop" 
               width={758} 
               height={639} 
@@ -391,9 +410,9 @@ export default function CandidatePage() {
               <Image 
                 src="/candidate-feature3.png" 
                 alt="Mock interview illustration" 
-                width={542} 
+                width={545} 
                 height={408} 
-                className="w-full h-auto lg:w-[542px] lg:h-[408px] object-cover"
+                className="w-full h-auto lg:w-[545px] lg:h-[408px] object-cover"
                 priority 
               />
             </div>
@@ -463,8 +482,8 @@ export default function CandidatePage() {
         </div>
       </div>
 
-      {/* Benefits Section */}
-      <BenefitsSection />
+  {/* Benefits Section */}
+  <BenefitsSection benefits={candidateBenefits} />
       
       {/* Results Section */}
       <ResultsSection />

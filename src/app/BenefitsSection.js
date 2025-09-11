@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useTab } from "./TabContext";
 import PropTypes from "prop-types";
 
-export default function BenefitsSection({ forceEnterprise = false }) {
 
+export default function BenefitsSection({ benefits, forceEnterprise = false }) {
   const { selectedTab: tab } = useTab();
   const effectiveTab = forceEnterprise ? 'enterprise' : tab;
 
-  // Content for Individual/Candidate tab
+  // Default content for Individual/Candidate tab
   const candidateBenefits = [
     {
       img: "/resume.svg",
@@ -27,7 +27,7 @@ export default function BenefitsSection({ forceEnterprise = false }) {
     },
   ];
 
-  // Content for Enterprise tab
+  // Default content for Enterprise tab
   const enterpriseBenefits = [
     {
       img: "/save-time.svg",
@@ -46,8 +46,10 @@ export default function BenefitsSection({ forceEnterprise = false }) {
     },
   ];
 
-  // Select benefits based on active tab
-  const benefits = effectiveTab === "enterprise" ? enterpriseBenefits : candidateBenefits;
+  // Use provided benefits prop if present, else fallback to tab logic
+  const benefitsToShow = Array.isArray(benefits) && benefits.length > 0
+    ? benefits
+    : (effectiveTab === "enterprise" ? enterpriseBenefits : candidateBenefits);
 
   return (
     <section className="w-full bg-white py-[60px] flex flex-col items-center relative overflow-x-hidden">
@@ -65,7 +67,7 @@ export default function BenefitsSection({ forceEnterprise = false }) {
           <Image src="/rectangle.png" alt="Rectangle Background" fill style={{ objectFit: 'contain' }} />
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 z-10 relative">
-          {benefits.map((b, i) => (
+          {benefitsToShow.map((b, i) => (
             <div key={b.title} className="flex flex-col items-center">
               {/* Image Card */}
               <div
@@ -92,5 +94,6 @@ export default function BenefitsSection({ forceEnterprise = false }) {
 }
 
 BenefitsSection.propTypes = {
+  benefits: PropTypes.array,
   forceEnterprise: PropTypes.bool
 };

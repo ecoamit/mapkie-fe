@@ -69,9 +69,13 @@ export async function POST(req) {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // Office365: false for 587 (STARTTLS), true only if using 465
+      secure: smtpPort === 465,
       auth: { user: smtpUser, pass: smtpPass },
-      tls: smtpPort === 587 ? { ciphers: 'SSLv3', rejectUnauthorized: false } : undefined
+      requireTLS: smtpPort === 587,
+      tls: smtpPort === 587 ? { minVersion: 'TLSv1.2' } : undefined,
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
+      socketTimeout: 20000
     });
 
     // Verify connection/auth before attempting send
@@ -81,9 +85,14 @@ export async function POST(req) {
       console.error('SMTP verify failed', {
         code: verifyErr.code,
         command: verifyErr.command,
-        message: verifyErr.message
+        message: verifyErr.message,
+        name: verifyErr.name
       });
-      return new Response(JSON.stringify({ error: 'Email transport not ready' }), { status: 500 });
+      let reason = 'Email transport not ready';
+      if (verifyErr.code === 'EAUTH') reason = 'SMTP auth failed (check username/password or SMTP AUTH disabled)';
+      else if (verifyErr.code === 'ENOTFOUND' || verifyErr.code === 'EAI_AGAIN') reason = 'SMTP host DNS not reachable from server';
+      else if (verifyErr.code === 'ECONNECTION' || verifyErr.code === 'ETIMEDOUT') reason = 'Cannot reach SMTP server (network/port blocked)';
+      return new Response(JSON.stringify({ error: reason }), { status: 500 });
     }
 
     const lines = [
