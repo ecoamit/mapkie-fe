@@ -67,3 +67,100 @@ button:disabled:hover {
 }
 
 /* Utility class if needed in JSX: className="cursor-pointer" already via Tailwind */
+
+/* ------------------------------------------- */
+/* Navbar link typography (Pixel-perfect spec) */
+@layer utilities {
+  /* Spec: Lexend Regular (400), 18px, line-height 100%, letter-spacing 0 */
+  .nav-link { 
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0;
+    font-family: 'Lexend', var(--font-lexend), var(--font-geist-sans), var(--font-geist-mono), sans-serif;
+  /* Sizing spec */
+  height: 70px; /* total clickable area height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px; /* horizontal padding per spec (vertical 42px cannot coexist with 70px height) */
+  gap: 10px; /* future-proof if icon added */
+  border-bottom: 4px solid transparent; /* reserve 4px space to prevent layout shift */
+  box-sizing: border-box;
+  }
+  .nav-link--active { color: #007080; }
+
+  /* Login button spec */
+  .btn-login {
+    /* Auto width for natural pill; remove fixed width that made shape look boxy */
+    min-width: 105px; /* keep minimum sizing from spec but allow expansion if needed */
+    height: 40px;
+    padding: 6px 30px; /* vertical + horizontal padding */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 100px; /* exact design radius */
+    border: 1px solid transparent; /* needed for gradient stroke technique */
+    /* Layered background: first layer is button fill (white), second is border gradient */
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) border-box;
+    color: #007080;
+    font-weight: 600; /* previously font-semibold */
+    font-size: 16px;
+    line-height: 1; /* tighten vertical rhythm */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+  .btn-login:hover { background: #e6f2f2; }
+  .btn-login:focus { outline: 2px solid #00708033; outline-offset: 2px; }
+  .btn-login:active { background: #d1e7e7; }
+  .btn-login[disabled] { opacity: .5; cursor: not-allowed; }
+
+  /* Gradient text spec (Lexend 500, 16px, 1% letter-spacing approximated) */
+  .gradient-lexend {
+    font-family: 'Lexend', var(--font-lexend), var(--font-geist-sans), var(--font-geist-mono), sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.16px; /* ~1% of 16px */
+    background: linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* show gradient through text */
+    display: inline-block; /* ensure clipping works reliably */
+  }
+
+  /* Primary gradient button (orange) */
+  .btn-primary-gradient {
+    --grad-angle: 99.23deg;
+    background: linear-gradient(var(--grad-angle), #FF702F 0%, #FFA81C 114.48%);
+    color: #ffffff;
+    font-family: 'Lexend', var(--font-lexend), var(--font-geist-sans), var(--font-geist-mono), sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    padding: 10px 26px; /* retain existing comfortable spacing */
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary-gradient:hover { opacity: .92; }
+  .btn-primary-gradient:active { transform: translateY(1px); box-shadow: 0 1px 2px rgba(0,0,0,0.18); }
+  .btn-primary-gradient:focus { outline: 2px solid #FF9A40; outline-offset: 2px; }
+
+  /* Footer link typography */
+  .footer-link {
+    font-family: 'Lexend', var(--font-lexend), var(--font-geist-sans), var(--font-geist-mono), sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 165%;
+    letter-spacing: 0;
+    color: #061F34;
+  }
+}

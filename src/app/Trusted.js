@@ -16,16 +16,32 @@ export default function Trusted() {
   const totalSetWidth = logos.length * (logoWidth + gap);
 
   return (
-    <section className="w-full py-12 md:py-20 bg-white flex flex-col items-center justify-center">
+    <section className="w-full h-[428px] bg-white flex flex-col items-center justify-center">
       <h2
-        className="text-[#05445E] text-center font-bold text-2xl md:text-3xl lg:text-4xl mb-3"
-        style={{ fontFamily: 'Lexend, sans-serif', letterSpacing: 0 }}
+        className="mb-3 text-center"
+        style={{
+          fontFamily: 'Lexend, sans-serif',
+            fontWeight: 700,
+            fontSize: '42px',
+            lineHeight: '125%',
+            letterSpacing: 0,
+            background: 'linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+        }}
       >
         Trusted By Innovation Companies
       </h2>
       <p
-        className="text-[#4B5C6B] text-center text-base md:text-lg mb-10"
-        style={{ fontFamily: 'Lexend, sans-serif', fontWeight: 400 }}
+        className="text-center mb-15"
+        style={{
+          fontFamily: 'Lexend, sans-serif',
+          fontWeight: 400,
+          fontSize: '20px',
+          lineHeight: '125%',
+          letterSpacing: 0,
+          color: '#586977'
+        }}
       >
         Let experts handle your technical interviews while your team focuses on building
       </p>

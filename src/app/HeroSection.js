@@ -21,7 +21,7 @@ export default function HeroSection({
 
       {/* Background Image */}
   {!hideBackgroundWave && (
-      <div className="absolute bottom-[-520px] md:bottom-[-340px] xl:bottom-[-400px] inset-0 z-0">
+      <div className="absolute bottom-[-520px] md:bottom-[-340px] xl:bottom-[-570px] inset-0 z-0">
         <Image src="/wave.svg" alt="Wave background" fill style={{objectFit:'stretch', opacity:0.60}} />
       </div>
   )}
@@ -98,15 +98,53 @@ export default function HeroSection({
             ) : (
               <>
                 <h1
-                  className="text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light mb-4 mt-2 "
-                  style={{ fontFamily: 'Lexend, sans-serif', letterSpacing: 0 }}
+                  className="mb-4 mt-2"
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontWeight: 300, // Light
+                    fontSize: '50px',
+                    lineHeight: '130%', // updated per spec
+                    letterSpacing: 0
+                  }}
                 >
-                  Stand Out to Top <span className="font-semibold md:text-[38px] xl:text-[50px] text-[#154D5F]">Companies</span><br />
-                  with Proven <span className="font-semibold md:text-[38px] xl:text-[50px] text-[#154D5F]">Skills</span>
+                  Stand Out to Top{' '}
+                  <span
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontWeight: 600, // SemiBold
+                      fontSize: '50px',
+                      lineHeight: '130%',
+                      letterSpacing: 0,
+                      color: '#154D5F'
+                    }}
+                  >
+                    Companies
+                  </span>
+                  <br />
+                  with Proven{' '}
+                  <span
+                    style={{
+                      fontFamily: 'Lexend, sans-serif',
+                      fontWeight: 600,
+                      fontSize: '50px',
+                      lineHeight: '130%',
+                      letterSpacing: 0,
+                      color: '#154D5F'
+                    }}
+                  >
+                    Skills
+                  </span>
                 </h1>
                 <p
-                  className="text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-[#384C5D]"
-                  style={{ fontFamily: 'Lexend, sans-serif' }}
+                  className="mb-10 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0"
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontWeight: 400,
+                    fontSize: '20px',
+                    lineHeight: '130%',
+                    letterSpacing: 0,
+                    color: '#384C5D'
+                  }}
                 >
                   Mapkie empowers companies to build stronger teams and individuals to reach their potential.
                 </p>
@@ -117,7 +155,7 @@ export default function HeroSection({
           <div className="flex justify-center md:justify-start">
             <Link
               href="/contact"
-              className="text-white px-8 py-3 md:px-10 md:py-3 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] inline-flex items-center justify-center bg-transparent border border-solid hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]"
+              className="text-white px-8 py-3 md:px-10 md:py-5 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] inline-flex items-center justify-center bg-transparent border border-solid hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]"
               style={{
                 boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
                 letterSpacing: "0.5px",
@@ -240,8 +278,8 @@ export default function HeroSection({
                       />
                     </div>
                     {/* Mapkie logo (SVG already includes background) */}
-                    <div className="absolute left-[-150px] xl:left-[-150px] bottom-[200px] xl:bottom-[160px] z-20">
-                      <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={92} height={92} className="xl:w-[110px] xl:h-[110px]" priority />
+                    <div className="absolute left-[-150px] xl:left-[-175px] bottom-[200px] xl:bottom-[72px] z-20">
+                      <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={92} height={92} className="xl:w-[135px] xl:h-[135px]" priority />
                     </div>
                     {/* Company logos (desktop) */}
                     <div className="absolute left-[420px] lg:left-[520px] xl:left-[600px] top-[40px] xl:top-[70px] z-30 flex flex-col gap-6 items-center">

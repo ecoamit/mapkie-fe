@@ -7,16 +7,19 @@ import PropTypes from "prop-types";
 // Reusable feature block using 50/50 layout styling
 function FeatureBlock({ image, alt, title, body, reverse = false, index = 0, href }) {
   const isSvg = image?.toLowerCase().endsWith('.svg');
+  const isReference = title === 'References';
+  const isResume = title === 'Better Resume Writing';
+  const isMock = title === 'Mock Interviews';
   return (
-    <div className={`grid lg:grid-cols-2 gap-10 items-center ${reverse ? 'lg:direction-rtl' : ''}`}> {/* direction-rtl helper not tailwind; visual reverse handled below */}
+  <div className={`grid lg:grid-cols-2 gap-[200px] items-center ${reverse ? 'lg:direction-rtl' : ''} ${isReference ? 'lg:h-[444px]' : isResume ? 'lg:h-[379px]' : isMock ? 'lg:h-[424px]' : ''}`}> {/* direction-rtl helper not tailwind; visual reverse handled below */}
       {/* Illustration / Image */}
       <div className={`relative ${reverse ? 'lg:order-2' : ''}`}>
-        <div className="w-full h-auto lg:w-[542px] lg:h-[408px] inline-flex items-center">
+    <div className={`w-full h-auto inline-flex items-center ${isReference ? 'lg:w-[525px] lg:h-[444px]' : isResume ? 'lg:w-[531px] lg:h-[379px]' : isMock ? 'lg:w-[477px] lg:h-[424px]' : 'lg:w-[542px] lg:h-[408px]'}`}>
           <Image
             src={image}
             alt={alt}
-            width={542}
-            height={408}
+      width={isReference ? 525 : isResume ? 531 : isMock ? 477 : 542}
+      height={isReference ? 444 : isResume ? 379 : isMock ? 424 : 408}
             className={`max-w-full max-h-full ${isSvg ? 'object-contain' : 'object-cover'} object-left`}
             priority={index === 0}
             loading={index === 0 ? 'eager' : 'lazy'}
@@ -24,9 +27,36 @@ function FeatureBlock({ image, alt, title, body, reverse = false, index = 0, hre
         </div>
       </div>
       {/* Content */}
-      <div className={`flex flex-col justify-center lg:w-[567px] lg:h-[408px] ${reverse ? 'lg:order-1' : ''}`}>
-        <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6 leading-tight">{title}</h3>
-        <p className="text-gray-600 text-[16px] leading-relaxed mb-6">{body}</p>
+  <div className={`flex flex-col ${isReference ? 'justify-center lg:h-[444px]' : isResume ? 'justify-center lg:h-[379px]' : isMock ? 'justify-center lg:h-[424px]' : 'justify-center lg:h-[408px]'} lg:w-[567px] ${reverse ? 'lg:order-1' : ''}`}>
+        <h3
+          className="mb-6"
+          style={{
+            fontFamily: 'Lexend, sans-serif',
+            fontWeight: 700,
+            fontSize: '28px',
+            lineHeight: '50px',
+            letterSpacing: 0,
+            background: 'linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          {title}
+        </h3>
+        <p
+          className="mb-6"
+          style={{
+            fontFamily: 'Lexend, sans-serif',
+            fontWeight: 400,
+            fontSize: '18px',
+            lineHeight: '125%',
+            letterSpacing: 0,
+            color: '#384C5D'
+          }}
+        >
+          {body}
+        </p>
         <div>
           {href ? (
             <Link
@@ -115,16 +145,21 @@ export default function FeaturesSection({ forceEnterprise = false }) {
 
   return (
     <section className="relative z-10 py-20 bg-[#E8F0F3]">
-      <div className="max-w-7xl mx-auto ">
+  <div className="w-full max-w-[1237px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-30">
           <h2
-            className="font-bold mb-6 leading-tight text-3xl md:text-4xl lg:text-[38px]"
+            className="mb-6"
             style={{
-              background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
+              fontFamily: 'Lexend, sans-serif',
+              fontWeight: 700,
+              fontSize: '42px',
+              lineHeight: '125%',
+              letterSpacing: 0,
+              background: 'linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}
           >
             {effectiveTab === 'enterprise' ? (
@@ -134,8 +169,16 @@ export default function FeaturesSection({ forceEnterprise = false }) {
             )}
           </h2>
           <p
-            className="text-lg md:text-xl font-normal text-gray-600 max-w-4xl mx-auto leading-relaxed"
-            style={{ fontSize: "18px", fontWeight: 400, fontStyle: "normal" }}
+            className="mx-auto max-w-4xl mb-0"
+            style={{
+              fontFamily: 'Lexend, sans-serif',
+              fontWeight: 400,
+              fontSize: '20px',
+              lineHeight: '125%',
+              letterSpacing: 0,
+              textAlign: 'center',
+              color: '#586977'
+            }}
           >
             Let experts handle your technical interviews while your team focuses on building
           </p>

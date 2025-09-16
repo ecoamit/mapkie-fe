@@ -17,27 +17,26 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-16 lg:gap-20 w-full justify-between">
           <div className="text-center md:text-left">
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Product</div>
-            <ul className="text-[#263238] text-sm md:text-[15px] space-y-2 md:space-y-1 font-medium" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li>Why Mapkie</li>
-              <li>Platform</li>
-              <li>Services</li>
-              <li>Testimonial</li>
-              <li>Pricing</li>
+            <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
+              <li className="footer-link">Why Mapkie</li>
+              <li className="footer-link">Platform</li>
+              <li className="footer-link">Services</li>
+              <li className="footer-link">Testimonial</li>
+              <li className="footer-link">Pricing</li>
             </ul>
           </div>
           <div className="text-center md:text-left">
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Resources</div>
-            <ul className="text-[#263238] text-sm md:text-[15px] space-y-2 md:space-y-1 font-medium" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li>Blog</li>
-              <li>Help center</li>
+            <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
+              <li className="footer-link">About Us</li>
             </ul>
           </div>
           <div className="text-center md:text-left">
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Other link</div>
-            <ul className="text-[#263238] text-sm md:text-[15px] space-y-2 md:space-y-1 font-medium" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li>Privacy</li>
-              <li>Terms of Services</li>
-              <li>Contact Us</li>
+            <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
+              <li className="footer-link">Privacy</li>
+              <li className="footer-link">Terms of Services</li>
+              <li className="footer-link">Contact Us</li>
             </ul>
           </div>
         </div>

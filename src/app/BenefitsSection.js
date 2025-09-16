@@ -57,34 +57,95 @@ export default function BenefitsSection({ benefits, forceEnterprise = false }) {
       {/* <div className="absolute left-0 top-[210px] w-full h-[60px] bg-[#eaf4fa] z-0" /> */}
       {/* Heading */}
       <div className="w-full max-w-[1100px] mx-auto text-center mb-2 z-10 relative">
-        <h2 className="text-[36px] md:text-[40px] font-extrabold text-[#17445A] mb-3 leading-tight tracking-tight">Key Benefits</h2>
-        <p className="text-[#586977] text-[16px] mb-14 font-regular">Your All-in-One Platform to Get Interview-Ready and Get Hired</p>
+        <h2
+          className="mb-3"
+          style={{
+            fontFamily: 'Lexend, sans-serif',
+            fontWeight: 700,
+            fontSize: '42px',
+            lineHeight: '125%',
+            letterSpacing: 0,
+            background: 'linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textAlign: 'center'
+          }}
+        >
+          Key Benefits
+        </h2>
+        <p
+          className="mb-14"
+          style={{
+            fontFamily: 'Lexend, sans-serif',
+            fontWeight: 400,
+            fontSize: '20px',
+            lineHeight: '125%',
+            letterSpacing: 0,
+            textAlign: 'center',
+            color: '#586977'
+          }}
+        >
+          Your All-in-One Platform to Get Interview-Ready and Get Hired
+        </p>
         {/* Tab selection is now handled in HeroSection. */}
       </div>
       {/* Rectangle background behind image boxes */}
       <div className="w-full max-w-[1200px] relative flex justify-center items-center px-4 md:px-0 z-10" style={{ minHeight: 390 }}>
-        <div className="absolute left-0 right-0 mx-auto top-1/2 -translate-y-1/2 z-0 flex justify-center pointer-events-none select-none" style={{ width: '100%', height: '260px' }}>
-          <Image src="/rectangle.png" alt="Rectangle Background" fill style={{ objectFit: 'contain' }} />
+        {/* Full-viewport background rectangle */}
+          <div
+            className="absolute top-1/2 -translate-y-[100%] left-1/2 -translate-x-1/2 z-0 pointer-events-none select-none w-screen h-[131px]"
+            aria-hidden="true"
+          >
+          <Image
+            src="/rectangle.png"
+            alt=""
+            fill
+            priority
+            style={{ objectFit: 'cover' }}
+          />
         </div>
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 z-10 relative">
-          {benefitsToShow.map((b, i) => (
-            <div key={b.title} className="flex flex-col items-center">
-              {/* Image Card */}
-              <div
-                className="bg-white rounded-[18px] border border-[#bcd6e6] flex items-center justify-center px-8 py-10 transition-all relative min-h-[270px] w-full"
-              >
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 z-10 relative place-items-center md:place-items-start">
+          {benefitsToShow.map((b) => (
+            <div key={b.title} className="flex flex-col items-start md:w-[392px] md:h-[405px] w-full">
+              {/* Image Box */}
+              <div className="bg-white rounded-[15px] border border-[#B2BAC0] flex items-center justify-center w-full md:w-[392px] md:h-[257px] h-[220px] transition-all overflow-hidden">
                 <Image
                   src={b.img}
                   alt={b.title}
-                  width={180}
-                  height={140}
-                  className="object-contain mx-auto"
+                  width={b.title === 'Resume That Stands Out' ? 217 : b.title === 'Real-Time Feedback' ? 199 : b.title === 'Confidence Building' ? 274 : 200}
+                  height={b.title === 'Resume That Stands Out' ? 217 : b.title === 'Real-Time Feedback' ? 199 : b.title === 'Confidence Building' ? 182 : 150}
+                  className="object-contain"
                   priority
                 />
               </div>
-              {/* Content below the card */}
-              <h3 className="text-[22px] font-extrabold text-[#17445A] mt-7 mb-2 leading-tight w-full">{b.title}</h3>
-              <p className="text-[#586977] text-[14px] w-full font-normal leading-snug">{b.desc}</p>
+              {/* Content */}
+              <h3
+                className="mt-5 mb-2 w-full"
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontWeight: 600,
+                  fontSize: '24px',
+                  lineHeight: '135%',
+                  letterSpacing: 0,
+                  color: '#000000'
+                }}
+              >
+                {b.title}
+              </h3>
+              <p
+                className="w-full"
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontWeight: 400,
+                  fontSize: '20px',
+                  lineHeight: '125%',
+                  letterSpacing: 0,
+                  color: '#586977'
+                }}
+              >
+                {b.desc}
+              </p>
             </div>
           ))}
         </div>
