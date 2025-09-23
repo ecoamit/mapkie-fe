@@ -10,7 +10,8 @@ export default function HeroSection({
   heroImage = null,
   className = "",
   hideImageSection = false,
-  hideBackgroundWave = false // new prop
+  hideBackgroundWave = false, // new prop
+  contentMaxWidth = null // optional max width (e.g., '654px') for text content
 }) {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
 
@@ -29,7 +30,7 @@ export default function HeroSection({
       {/* Main Content Container */}
       <div className="relative w-full max-w-[1600px] flex flex-col md:flex-row items-start z-10 mx-4 sm:mx-8 md:mx-8 xl:mx-16 2xl:mx-32 px-4 md:px-0">
         {/* Text Block */}
-        <div className="w-full md:max-w-[600px] xl:max-w-[800px] pt-0 text-center md:text-left">
+        <div className="w-full md:max-w-[600px] xl:max-w-[800px] pt-0 text-center md:text-left" style={contentMaxWidth ? { maxWidth: contentMaxWidth } : undefined}>
           {/* Tabs - Only show if showTabs is true */}
           {showTabs && (
             <div className="w-full max-w-[420px] mx-auto md:mx-0 mb-6">
@@ -76,7 +77,7 @@ export default function HeroSection({
           {/* Headline & Subheadline - Switch by Tab or use custom content */}
           {content ? (
             <div>
-              <h1 className="text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light mb-4 mt-2">
+              <h1 className={`mb-4 ${typeof content.headline === 'string' || (content.headline?.props && !/hero-headline-44/.test(JSON.stringify(content.headline.props)) ) ? 'text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light' : ''}`}>
                 {content.headline}
               </h1>
               <p className="text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-[#384C5D]">
@@ -152,17 +153,10 @@ export default function HeroSection({
             )
           ) : null}
           {/* CTA Button */}
-          <div className="flex justify-center md:justify-start">
+          <div className="flex justify-center md:justify-start mt-10">
             <Link
               href="/contact"
-              className="text-white px-8 py-3 md:px-10 md:py-5 rounded-full font-medium text-sm md:text-[14px] shadow-lg transition-colors w-auto md:w-[190] h-auto md:h-[54px] inline-flex items-center justify-center bg-transparent border border-solid hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]"
-              style={{
-                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                letterSpacing: "0.5px",
-                borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                color: "#fff"
-              }}
+              className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
             >
               {content?.buttonText || "Request Demo"}
             </Link>

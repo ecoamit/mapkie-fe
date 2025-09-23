@@ -28,7 +28,7 @@ const candidateBenefits = [
 const candidateContent = {
   headline: (
     <>
-      All-in-One <span className="font-bold text-[#1D6C86]">Platform to Showcase Your Skills</span> and <span className="font-bold text-[#1D6C86]">Stand Out</span> to Top Companies
+      <span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">All-in-One</span> <span className="hero-headline-44">Platform to Showcase Your </span><span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">Skills</span><span className="hero-headline-44"> and </span><span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">Stand Out</span><span className="hero-headline-44"> to Top Companies</span>
     </>
   ),
   subheadline: "Get step-by-step guidance from industry interviewers to craft a resume.",
@@ -61,6 +61,7 @@ export default function CandidatePage() {
             content={candidateContent}
             hideImageSection={true}
             className="bg-transparent w-full h-full flex items-start py-0"
+            contentMaxWidth="654px"
           />
         </div>
         
@@ -80,414 +81,192 @@ export default function CandidatePage() {
         </div>
       </div>
       
-        <div className="relative z-10 py-16 bg-white">
+        <div className="relative z-10 py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 lg:px-4">
 
           <div className="text-center mb-16">
             <h2
-                className="font-bold mb-6 leading-tight text-3xl md:text-4xl lg:text-[38px]"
-                style={{
-                  background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
-                }}
+              className="heading-42-gradient mb-6 mx-auto"
+              style={{ maxWidth: '942px' }}
             >
-                Why Most Candidates Get Stuck — And How<br />
-                Mapkie Helps You Break Through
+              Why Most Candidates Get Stuck — And How Mapkie Helps You Break Through
             </h2>
             <p
-              className="text-lg md:text-xl font-normal text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              className="max-w-7xl mx-auto mb-0"
               style={{
-                fontSize: "18px",
+                fontFamily: 'Lexend, sans-serif',
                 fontWeight: 400,
-                fontStyle: "normal"
+                fontSize: '20px',
+                letterSpacing: 0,
+                textAlign: 'center',
+                color: '#586977'
               }}
             >
-                Sharpen your skills, reduce anxiety, and prepare for real technical interviews with expert-led mock.
+              Sharpen your skills, reduce anxiety, and prepare for real technical interviews with expert-led mock sessions.
             </p>
           </div>
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12 justify-items-center">
-            {/* Referrals Card */}
-            <div className="bg-[#E8F4F8] rounded-2xl p-8 border border-[#B8D4E0] w-full md:w-[386px] md:h-[275px] flex flex-col">
-              {/* Icon Placeholder */}
-              <div className="w-16 h-16 bg-[#1D6C86] rounded-lg mb-6 flex items-center justify-center flex-shrink-0">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
+            <div className="grid md:grid-cols-3 gap-8 lg:gap-12 justify-items-center" style={{height: '320px'}}>
+              {/* Referrals Card */}
+              <div className="candidate-card">
+                <div className="candidate-card-icon p-0" style={{background:'transparent'}}>
+                  <Image src="/referral-icon.svg" alt="Referral icon" width={50} height={50} className="w-[50px] h-[50px] object-contain" />
+                </div>
+                <h3 className="candidate-card-title">Referrals</h3>
+                <p className="candidate-card-text">
+                  Access hidden opportunities at top companies through our trusted interviewer community.
+                </p>
+                <div className="flex justify-start mt-auto">
+                  <Link href="/referral" className="btn-request-demo text-sm">
+                    Find Reference
+                  </Link>
+                </div>
               </div>
-              
-              <h3 className="text-lg font-semibold text-gray-900 mb-3 flex-shrink-0">Referrals</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed flex-grow text-sm">
-                Access hidden opportunities at top companies through our trusted interviewer community.
-              </p>
-              
-              <div className="flex justify-start mt-auto">
-                <Link href="/referral" className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid" style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}>
-                  Find Reference
-                </Link>
-              </div>
-            </div>
 
-            {/* Better Resume Writing Card */}
-            <div className="bg-[#E8F4F8] rounded-2xl p-8 border border-[#B8D4E0] w-full md:w-[386px] md:h-[275px] flex flex-col">
-              {/* Icon Placeholder */}
-              <div className="w-16 h-16 bg-[#1D6C86] rounded-lg mb-6 flex items-center justify-center flex-shrink-0">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14,2 14,8 20,8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10,9 9,9 8,9"></polyline>
-                </svg>
+              {/* Better Resume Writing Card */}
+              <div className="candidate-card">
+                <div className="candidate-card-icon p-0" style={{background:'transparent'}}>
+                  <Image src="/resume-writing-icon.svg" alt="Resume writing icon" width={50} height={50} className="w-[50px] h-[50px] object-contain" />
+                </div>
+                <h3 className="candidate-card-title">Better Resume Writing</h3>
+                <p className="candidate-card-text">
+                  Your resume is guided by experienced professionals — not auto-filled by generic AI
+                </p>
+                <div className="flex justify-start mt-auto">
+                  <Link href="/referral?type=resume" className="btn-request-demo text-sm">
+                    Create Resume
+                  </Link>
+                </div>
               </div>
-              
-              <h3 className="text-lg font-semibold text-gray-900 mb-3 flex-shrink-0">Better Resume Writing</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed flex-grow text-sm">
-                Your resume is guided by experienced professionals — not auto-filled by generic AI
-              </p>
-              
-              <div className="flex justify-start mt-auto">
-                <Link
-                  href="/referral?type=resume"
-                  className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}
-                >
-                  Create Resume
-                </Link>
-              </div>
-            </div>
 
-            {/* Mock Interviews Card */}
-            <div className="bg-[#E8F4F8] rounded-2xl p-8 border border-[#B8D4E0] w-full md:w-[386px] md:h-[275px] flex flex-col">
-              {/* Icon Placeholder */}
-              <div className="w-16 h-16 bg-[#1D6C86] rounded-lg mb-6 flex items-center justify-center flex-shrink-0">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              
-              <h3 className="text-lg font-semibold text-gray-900 mb-3 flex-shrink-0">Mock Interviews</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed flex-grow text-sm">
-                Every session is conducted by professionals who have interviewed candidates at top firms
-              </p>
-              
-              <div className="flex justify-start mt-auto">
-                <Link
-                  href="/referral?type=mock"
-                  className="text-white px-6 py-2 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}
-                >
-                  Practice Daily
-                </Link>
+              {/* Mock Interviews Card */}
+              <div className="candidate-card">
+                <div className="candidate-card-icon p-0" style={{background:'transparent'}}>
+                  <Image src="/mock-interview-icon.svg" alt="Mock interview icon" width={50} height={50} className="w-[50px] h-[50px] object-contain" />
+                </div>
+                <h3 className="candidate-card-title">Mock Interviews</h3>
+                <p className="candidate-card-text">
+                  Every session is conducted by professionals who have interviewed candidates at top firms
+                </p>
+                <div className="flex justify-start mt-auto">
+                  <Link href="/referral?type=mock" className="btn-request-demo text-sm">
+                    Practice Daily
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
 
-      {/* New Feature Section - 50/50 Layout */}
-      <div className="relative z-10 py-20 bg-[#E8F0F3]">
-        <div className="max-w-7xl mx-auto ">
+  {/* Feature Sections Wrapper */}
+  <div className="relative z-10 bg-[#E8F0F3] pt-24">
+    <div className="space-y-[10px]">
+      {/* New Feature Section - 50/50 Layout (Feature 1) */}
+      <div className="max-w-7xl mx-auto ">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2
-                className="font-bold mb-6 leading-tight text-3xl md:text-4xl lg:text-[38px]"
-                style={{
-                  background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
-                }}
+              className="heading-42-gradient mb-6 mx-auto"
+              style={{ maxWidth: '942px' }}
             >
-                Everything You Need to Get Hired —<br />
-                All in One Platform
+              Everything You Need to Get Hired —<br />
+              All in One Platform
             </h2>
             <p
-              className="text-lg md:text-xl font-normal text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              className="max-w-7xl mx-auto mb-0"
               style={{
-                fontSize: "18px",
+                fontFamily: 'Lexend, sans-serif',
                 fontWeight: 400,
-                fontStyle: "normal"
+                fontSize: '20px',
+                letterSpacing: 0,
+                textAlign: 'center',
+                color: '#586977'
               }}
             >
-                Mapkie helps job seekers prepare, improve, and connect with top opportunities through expert-led support.
+              Sharpen your skills, reduce anxiety, and prepare for real technical interviews with expert-led mock sessions.
             </p>
           </div>
 
-          {/* 50-50 Layout - Full Width */}
-          <div className="grid lg:grid-cols-2 gap-10">
-            {/* Left Side - Image */}
-            <div className="relative">
-              <Image 
-                src="/candidate-feature1.svg" 
-                alt="Feature illustration" 
-                width={542} 
-                height={408} 
-                className="w-full h-auto lg:w-[542px] lg:h-[408px] object-cover"
-                priority 
-              />
+          {/* 50-50 Layout - Full Width (Feature 1) */}
+          <div className="feature-layout">
+            <div>
+              <Image src="/candidate-feature1.svg" alt="Trusted referrals illustration" width={542} height={408} priority />
             </div>
-
-            {/* Right Side - Content */}
-            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6 leading-tight">
-                Trusted Referrals — Get Noticed by the Right Companies
-              </h3>
-              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
-                Mapkie connects you with interviewers who&apos;ve assessed your skills. Their trusted referrals give your profile credibility and visibility.
-              </p>
-              
-              {/* Feature List */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
+            <div className="feature-content">
+              <h3 className="feature-title">Trusted Referrals — Get Noticed by the Right Companies</h3>
+              <p className="feature-desc">Mapkie connects you with interviewers who&apos;ve assessed your skills. Their trusted referrals give your profile credibility and visibility.</p>
+              <div className="feature-points">
+                <div className="feature-point">
+                  <div className="feature-point-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"></polyline></svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Referrals by professionals who&apos;ve interviewed and assessed you
-                  </p>
+                  <p className="feature-point-text">Referrals by professionals who&apos;ve interviewed and assessed you</p>
                 </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
+                <div className="feature-point">
+                  <div className="feature-point-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"></polyline></svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Get referred by trusted professionals in your field
-                  </p>
+                  <p className="feature-point-text">Get referred by trusted professionals in your field</p>
                 </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
+                <div className="feature-point">
+                  <div className="feature-point-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"></polyline></svg>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Boost your visibility and credibility for serious roles
-                  </p>
+                  <p className="feature-point-text">Boost your visibility and credibility for serious roles</p>
                 </div>
               </div>
-
-              {/* CTA Button */}
-              <div className="flex justify-start mt-8">
-                <button
-                  className="text-white px-8 py-3 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}
-                >
-                  Contact Us
-                </button>
+              <div style={{marginTop:'32px'}}>
+                <button className="btn-request-demo text-sm px-8">Contact Us</button>
               </div>
             </div>
           </div>
-        </div>
       </div>
 
-      {/* Second Feature Section - Resume Build */}
-      <div className="relative z-10 py-16 bg-[#E8F0F3]">
-        <div className="max-w-7xl mx-auto ">
-          {/* 50-50 Layout - Content Left, Image Right */}
-          <div className="grid lg:grid-cols-2 gap-10">
-            {/* Left Side - Content */}
-            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6">
-                Resume Build with Expert guidance
-              </h3>
-              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
-                Mapkie helps job seekers create, polish, and optimize resumes to help you craft a resume that reflects your true potential.
-              </p>
-              
-              {/* Feature List */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Tailored, personalized, section-by-section support from experienced professionals beyond AI Experts
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    ATS-friendly formatting with role-specific language
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Real feedback to refine your tone, structure, and impact
-                  </p>
-                </div>
+      {/* Second Feature Section - Resume Build (Feature 2) */}
+      <div className="max-w-7xl mx-auto ">
+          {/* Feature 2 (Resume Build) reverse layout */}
+          <div className="feature-layout reverse">
+            <div className="feature-content">
+              <h3 className="feature-title">Resume Build with Expert Guidance</h3>
+              <p className="feature-desc">Mapkie helps job seekers create, polish, and optimize resumes to help you craft a resume that reflects your true potential.</p>
+              <div className="feature-points">
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Tailored, personalized, section support from experienced</p></div>
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">ATS-friendly formatting with role-specific language</p></div>
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Real feedback to refine tone, structure, and impact</p></div>
               </div>
-
-              {/* CTA Button */}
-              <div className="flex justify-start mt-8">
-                <button
-                  className="text-white px-8 py-3 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}
-                >
-                  Contact Us
-                </button>
-              </div>
+              <div style={{marginTop:'32px'}}><button className="btn-request-demo text-sm px-8">Contact Us</button></div>
             </div>
-
-            {/* Right Side - Image */}
-            <div className="relative">
-              <Image 
-                src="/candidate-feature2.svg" 
-                alt="Resume building illustration" 
-                width={542} 
-                height={408} 
-                className="w-full h-auto lg:w-[542px] lg:h-[408px] object-cover"
-                priority 
-              />
+            <div>
+              <Image src="/candidate-feature2.svg" alt="Resume building illustration" width={542} height={408} priority />
             </div>
           </div>
-        </div>
       </div>
 
-      {/* Third Feature Section - Mock Interviews */}
-      <div className="relative z-10 py-16 bg-[#E8F0F3]">
-        <div className="max-w-7xl  mx-auto">
-          {/* 50-50 Layout - Image Left, Content Right */}
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left Side - Image */}
-            <div className="relative">
-              <Image 
-                src="/candidate-feature3.svg" 
-                alt="Mock interview illustration" 
-                width={545} 
-                height={408} 
-                className="w-full h-auto lg:w-[545px] lg:h-[408px] object-cover"
-                priority 
-              />
+      {/* Third Feature Section - Mock Interviews (Feature 3) */}
+      <div className="max-w-7xl  mx-auto">
+          {/* Feature 3 (Mock Interviews) */}
+          <div className="feature-layout">
+            <div>
+              <Image src="/candidate-feature3.svg" alt="Mock interview illustration" width={542} height={408} priority />
             </div>
-
-            {/* Right Side - Content */}
-            <div className="flex flex-col justify-center lg:w-[567px] lg:h-[408px]">
-              <h3 className="text-[24px] font-bold text-[#1D6C86] mb-6">
-                Mock Interviews — Practice with Experts
-              </h3>
-              <p className="text-gray-600 text-[16px] leading-relaxed mb-6">
-                You work in confidential, practiced, and ready to handle live questions without the stress of being unprepared.
-              </p>
-              
-              {/* Feature List */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Practice real interview formats in a low-stress setting
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Receive expert feedback on strengths and improvement areas
-                  </p>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mt-1">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"></polyline>
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-[16px]">
-                    Be better prepared for coding rounds, and behavioral questions
-                  </p>
-                </div>
+            <div className="feature-content">
+              <h3 className="feature-title">Mock Interviews — Practice with Experts</h3>
+              <p className="feature-desc">You work in confidential, practiced, and ready to handle live questions without the stress of being unprepared.</p>
+              <div className="feature-points">
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Practice real interview formats in a low-stress setting</p></div>
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Receive expert feedback on strengths and improvement areas</p></div>
+                <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Be better prepared for coding and behavioral questions</p></div>
               </div>
-
-              {/* CTA Button */}
-              <div className="flex justify-start mt-8">
-                <button
-                  className="text-white px-8 py-3 rounded-full font-medium text-sm shadow-lg transition-colors w-auto h-auto flex items-center justify-center bg-transparent border border-solid"
-                  style={{
-                    boxShadow: "0 4px 16px 0 rgba(0,0,0,0.08)",
-                    letterSpacing: "0.5px",
-                    borderImageSource: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
-                    background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%) padding-box, #fff border-box",
-                    color: "#fff"
-                  }}
-                >
-                  Contact Us
-                </button>
-              </div>
+              <div style={{marginTop:'32px'}}><button className="btn-request-demo text-sm px-8">Contact Us</button></div>
             </div>
           </div>
-        </div>
       </div>
+    </div>
+  </div>
 
-  {/* Benefits Section */}
-  <BenefitsSection benefits={candidateBenefits} />
-      
+      {/* Benefits Section */}
+      <BenefitsSection benefits={candidateBenefits} />
       {/* Results Section */}
       <ResultsSection />
-      
       {/* Testimonial Section */}
       <TestimonialSection />
     </div>
