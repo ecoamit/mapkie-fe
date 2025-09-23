@@ -17,24 +17,23 @@ export default function ContactUs() {
   };
 
   return (
-  <section className="relative isolate w-full overflow-hidden bg-[#E8F0F3] pb-16">
-      {/* dotted vertical background column */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="hidden lg:block absolute right-[50%] translate-x-[560px] top-0 bottom-0 flex flex-col justify-between py-16">
-          <Image src="/dotted-bg.svg" alt="" width={260} height={420} className="opacity-60" />
-          <Image src="/dotted-bg.svg" alt="" width={260} height={420} className="opacity-60" />
-        </div>
-      </div>
+  <section className="relative dotted-right-half w-full bg-[#E8F0F3] pb-16">
       <div className="relative mx-auto max-w-[1280px] px-3 sm:px-5 lg:px-6 pt-10 md:pt-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-start">
-          {/* Left section: heading + image + cards will appear below overall container */}
-          <div className="order-2 lg:order-1 flex flex-col gap-8">
+          {/* Left section: heading + image */}
+          <div
+            className="order-2 lg:order-1 flex flex-col lg:gap-[50px] gap-10"
+            style={{ width: '100%', maxWidth: '496px', height: '579px' }}
+          >
             <div>
-              <h2 className="text-[#1D6C86] text-[30px] sm:text-[34px] md:text-[38px] lg:text-[40px] font-semibold leading-tight">Contact Us</h2>
-              <p className="mt-4 text-[#496276] text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-[540px]">Let’s connect and create meaningful opportunities together. Whether you’re growing your team or exploring your next career move—we’re just a message away.</p>
+              <h2 className="contact-heading-44">Contact Us</h2>
+              <p className="contact-subtext-20 mt-4" style={{maxWidth:'496px'}}>Let’s connect and create meaningful opportunities together. Whether you’re growing your team or exploring your next career move—we’re just a message away.</p>
             </div>
             {/* Illustration */}
-            <div className="w-full max-w-[520px] aspect-[4/3] mx-auto overflow-hidden shadow-[0_6px_18px_rgba(6,31,52,0.08)] flex items-center justify-center">
+            <div
+              className="w-full aspect-[4/3] overflow-hidden shadow-[0_6px_18px_rgba(6,31,52,0.08)] flex items-center justify-center rounded-xl"
+              style={{ maxWidth: '496px' }}
+            >
               <Image
                 src="/contact-us.svg"
                 alt="Contact illustration"
@@ -47,11 +46,17 @@ export default function ContactUs() {
             </div>
           </div>
           {/* Form card */}
-          <div className="order-1 lg:order-2 relative">
+          <div
+            className="order-1 lg:order-2 relative flex"
+            style={{ width: '683px', maxWidth: '683px', height: '589px' }}
+          >
             <div className="pointer-events-none absolute -left-6 -top-6 opacity-80 hidden sm:block">
               <Image src="/rectangle.png" alt="" width={280} height={200} />
             </div>
-            <div className="relative bg-white rounded-2xl shadow-[0_14px_40px_rgba(6,31,52,0.10)] border border-[#E0E8ED] px-5 sm:px-6 md:px-7 lg:px-10 py-6 md:py-8 w-full max-w-[540px]">
+            <div
+              className="relative bg-white rounded-2xl shadow-[0_14px_40px_rgba(6,31,52,0.10)] border border-[#E0E8ED] px-5 sm:px-6 md:px-7 lg:px-10 py-6 md:py-8 w-full"
+              style={{ height: '100%' }}
+            >
               {submitted ? (
                 <div className="text-center py-6">
                   <div className="mx-auto mb-5 w-12 h-12 rounded-full flex items-center justify-center" style={{ background: '#1D6C86' }}>
@@ -62,26 +67,26 @@ export default function ContactUs() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="space-y-4">
-                  <div className="space-y-1">
-                    <h3 className="text-[18px] md:text-[20px] font-semibold text-[#0D2A3F]">Let’s Talk</h3>
-                    <p className="text-[12px] md:text-[13px] text-[#5C7285] leading-relaxed">Get in touch with us and we will provide a solution that meets your exact requirements</p>
+                  <div className="space-y-2">
+                    <h3 className="cu-form-heading">Let’s Talk</h3>
+                    <p className="cu-form-desc">Get in touch with us and we will provide a solution that meets your exact requirements</p>
                   </div>
                   <div>
-                    <label htmlFor="cu_fullName" className="block text-[12px] text-[#39586A] mb-1.5 font-medium">Full Name</label>
+                    <label htmlFor="cu_fullName" className="cu-label mb-1.5">Full Name</label>
                     <input id="cu_fullName" type="text" placeholder="Enter Your Full Name" required className="w-full h-11 rounded-md border border-[#D5E2EA] bg-white px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86] transition" />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="cu_email" className="block text-[12px] text-[#39586A] mb-1.5 font-medium">Email</label>
+                      <label htmlFor="cu_email" className="cu-label mb-1.5">Email</label>
                       <input id="cu_email" type="email" placeholder="Enter Email" required className="w-full h-11 rounded-md border border-[#D5E2EA] bg-white px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86] transition" />
                     </div>
                     <div>
-                      <label htmlFor="cu_phone" className="block text-[12px] text-[#39586A] mb-1.5 font-medium">Phone number</label>
+                      <label htmlFor="cu_phone" className="cu-label mb-1.5">Phone number</label>
                       <input id="cu_phone" type="tel" placeholder="Enter Phone Number" className="w-full h-11 rounded-md border border-[#D5E2EA] bg-white px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86] transition" />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="cu_message" className="block text-[12px] text-[#39586A] mb-1.5 font-medium">Message</label>
+                    <label htmlFor="cu_message" className="cu-label mb-1.5">Message</label>
                     <textarea id="cu_message" rows={5} placeholder="Enter Message" className="w-full rounded-md border border-[#D5E2EA] bg-white px-3.5 py-2 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86] transition resize-none" />
                   </div>
                   <div className="pt-1">

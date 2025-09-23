@@ -322,6 +322,79 @@ button:disabled:hover {
     .feature-point { width:100%; height:auto; }
   }
 
+  /* ================= Contact Us Typography ================= */
+  .contact-heading-44 {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 44px;
+    line-height: 150%;
+    letter-spacing: 0;
+    color: #1D6C86;
+    margin: 0;
+  }
+  .contact-subtext-20 {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 18px;
+    line-height: 135%;
+    letter-spacing: 0;
+    color: #384C5D;
+    margin: 0;
+  }
+
+  /* ================= Contact Us Form Specific Typography ================= */
+  .cu-form-heading {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 25px;
+    line-height: 150%;
+    letter-spacing: 1%;
+    color: #000000;
+    margin-bottom: 6px;
+  }
+  .cu-form-desc {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 16px;
+    line-height: 135%;
+    letter-spacing: 1%;
+    color: #000000;
+    margin: 0;
+  }
+  .cu-label {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 1%;
+    color: #000000;
+    display: inline-block;
+  }
+
+  /* ================= Dotted Background (Right Half) ================= */
+  .dotted-right-half {
+    position: relative;
+    isolation: isolate; /* ensure pseudo-element stays behind content */
+  }
+  .dotted-right-half::after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 50%; /* start from midpoint horizontally */
+    width: 50%; /* dynamic half of container */
+    height: 75%; /* full container height */
+    background-image: url('/dotted-bg.svg');
+    background-repeat: repeat;
+    background-size: 1000px auto; /* slightly smaller tile -> denser dots */
+    opacity: 0.78; /* intensified visibility */
+    pointer-events: none;
+    z-index: -1;
+  }
+  /* Mobile: allow pattern to cover full width for better aesthetics */
+  @media (max-width: 768px) {
+    .dotted-right-half::after { left: 0; width: 100%; opacity: .55; background-size: 160px auto; }
+  }
+
   /* Responsive adjustments */
   @media (max-width: 1200px) { .feature-layout { gap: 72px; } }
   @media (max-width: 1024px) {
