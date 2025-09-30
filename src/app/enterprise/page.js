@@ -6,14 +6,15 @@ import BenefitsSection from "../BenefitsSection";
 import Trusted from "../Trusted";
 import ResultsSection from "../ResultsSection";
 import TestimonialSection from "../TestimonialSection";
-import EnterpriseWorkflow from "../EnterpriseWorkflow";
 
 const enterpriseContent = {
   headline: (
     <>
-      Bridge the Gap Between
+      <span className="hero-headline-44">Bridge the Gap Between</span>
       <br />
-      <span className="font-bold text-[#1D6C86]">Screening</span> and <span className="font-bold text-[#1D6C86]">Hiring</span>
+      <span className="hero-headline-44 hero-headline-44-strong" style={{color:'#1D6C86'}}>Screening</span>
+      <span className="hero-headline-44" style={{margin:'0 6px'}}>and</span>
+      <span className="hero-headline-44 hero-headline-44-strong" style={{color:'#1D6C86'}}>Hiring</span>
     </>
   ),
   subheadline: "Mapkie empowers companies to build stronger teams and individuals to reach their potential.",

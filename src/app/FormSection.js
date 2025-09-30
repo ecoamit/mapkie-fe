@@ -105,8 +105,8 @@ export default function FormSection({ variant = "referral" }) {
         formTitle: "Referral Program Form",
         formSub: "Fill in the details below, our team will reach out to help you get started!",
         fieldsTop: [
-          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name" },
-          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1 },
+          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name", required: true},
+          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1, required: true },
           { key: "phone", label: "Phone number", type: "tel", placeholder: "Enter Phone Number", col: 1, required: true },
           { key: "position", label: "Position Applying For", type: "text", placeholder: "Specify the job title or role" },
         ],
@@ -126,8 +126,8 @@ export default function FormSection({ variant = "referral" }) {
         formTitle: "Better Resume Writing",
         formSub: "Fill in the details below, our team will reach out to help you get started.",
         fieldsTop: [
-          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name" },
-          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1 },
+          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name", required: true},
+          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1, required: true },
           { key: "phone", label: "Phone number", type: "tel", placeholder: "Enter Phone Number", col: 1, required: true },
           { key: "jobRole", label: "Job Role You’re Targeting", type: "text", placeholder: "Specify the job title or role you want your resume to be improved for" },
         ],
@@ -147,8 +147,8 @@ export default function FormSection({ variant = "referral" }) {
         formTitle: "Mock Interview",
         formSub: "Fill in the details below, our team will reach out to help you get started!",
         fieldsTop: [
-          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name" },
-          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1 },
+          { key: "fullName", label: "Full Name", type: "text", placeholder: "Enter Your Full Name", required: true},
+          { key: "email", label: "Email", type: "email", placeholder: "Enter Your Email", col: 1, required: true },
           { key: "phone", label: "Phone number", type: "tel", placeholder: "Enter Phone Number", col: 1, required: true },
         ],
         upload: true,
@@ -157,7 +157,7 @@ export default function FormSection({ variant = "referral" }) {
           { key: "position", label: "Position Applying For", type: "text", placeholder: "Specify the job title or role" },
           { key: "jobPosting", label: "Job Posting Link (optional)", type: "url", placeholder: "Paste the URL of the job listing" },
           { key: "interviewType", label: "Interview Type (optional)", type: "select", options: ["Technical", "Functional"], col: 1 },
-          { key: "experience", label: "Experience Level (optional)", type: "select", options: ["0-1 years", "1-3 years", "3-5 years", "5+ years"], col: 1 },
+          { key: "experience", label: "Experience Level (optional)", type: "select", options: ["Entry (0-2 years)", "Mid (3-6 years)", "Senior (6-10 years)", "Executive (10+ years)"], col: 1 },
         ],
       },
     };
@@ -226,14 +226,14 @@ export default function FormSection({ variant = "referral" }) {
 
                 {/* Full-width field */}
                 <div className="mt-5">
-                  <label htmlFor="fullName" className="block text-[12px] text-[#39586A] mb-1.5">Full Name</label>
+                  <label htmlFor="fullName" className="block text-[12px] text-[#39586A] mb-1.5">Full Name <span className="text-red-600">*</span></label>
                   <input type="text" id="fullName" placeholder="Enter Your Full Name" className="w-full h-11 rounded-md border border-[#D5E2EA] px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86]" />
                 </div>
 
                 {/* Grid row for email + phone if present */}
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="email" className="block text-[12px] text-[#39586A] mb-1.5">Email</label>
+                    <label htmlFor="email" className="block text-[12px] text-[#39586A] mb-1.5">Email <span className="text-red-600">*</span></label>
                     <input type="email" id="email" placeholder="Enter Your Email" className="w-full h-11 rounded-md border border-[#D5E2EA] px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86]" />
                   </div>
                   <div>

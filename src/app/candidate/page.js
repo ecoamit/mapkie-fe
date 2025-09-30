@@ -216,7 +216,7 @@ export default function CandidatePage() {
                 </div>
               </div>
               <div style={{marginTop:'32px'}}>
-                <button className="btn-request-demo text-sm px-8">Contact Us</button>
+                <Link href="/contact" className="btn-request-demo text-sm px-8">Contact Us</Link>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function CandidatePage() {
                 <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">ATS-friendly formatting with role-specific language</p></div>
                 <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Real feedback to refine tone, structure, and impact</p></div>
               </div>
-              <div style={{marginTop:'32px'}}><button className="btn-request-demo text-sm px-8">Contact Us</button></div>
+              <div style={{marginTop:'32px'}}><Link href="/contact" className="btn-request-demo text-sm px-8">Contact Us</Link></div>
             </div>
             <div>
               <Image src="/candidate-feature2.svg" alt="Resume building illustration" width={542} height={408} priority />
@@ -257,7 +257,7 @@ export default function CandidatePage() {
                 <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Receive expert feedback on strengths and improvement areas</p></div>
                 <div className="feature-point"><div className="feature-point-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg></div><p className="feature-point-text">Be better prepared for coding and behavioral questions</p></div>
               </div>
-              <div style={{marginTop:'32px'}}><button className="btn-request-demo text-sm px-8">Contact Us</button></div>
+              <div style={{marginTop:'32px'}}><Link href="/contact" className="btn-request-demo text-sm px-8">Contact Us</Link></div>
             </div>
           </div>
       </div>
