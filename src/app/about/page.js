@@ -1,15 +1,17 @@
 import Navbar from "../Navbar";
 import HeroSection from "../HeroSection";
-import BenefitsSection from "../BenefitsSection";
 import TestimonialSection from "../TestimonialSection";
 import ResultsSection from "../ResultsSection";
 import CoreValuesSection from "../CoreValuesSection";
+import NewsCoverageSection from "../NewsCoverageSection";
+import JourneyTimelineSection from "../JourneyTimelineSection";
 import Image from "next/image";
 
 const aboutContent = {
   headline: (
     <>
-      Turning gaps into <br /><span className="font-bold text-[#1D6C86]">Opportunities</span>
+      <span className="about-hero-light-50">Turning gaps into</span><br />
+      <span className="about-hero-bold-60">Opportunities:</span>
     </>
   ),
   subheadline: "At Mapkie, we connect top talent with the right opportunities—bridging skill gaps and empowering businesses to grow with confidence.",
@@ -19,7 +21,7 @@ const aboutContent = {
 export default function AboutPage() {
   return (
     <div
-      className="min-h-screen relative overflow-hidden"
+      className="min-h-screen relative"
       style={{
         background: "linear-gradient(135deg, #E8F4F8 0%, #F0F8FA 50%, #E0F2F5 100%)",
         fontFamily: "Lexend, sans-serif",
@@ -33,8 +35,8 @@ export default function AboutPage() {
     >
       <Navbar />
 
-      {/* Hero with image */}
-      <div className="relative h-[90vh] max-h-[900px] flex flex-col">
+  {/* Hero Section (wave.svg behavior aligned with home page) */}
+  <div className="relative flex flex-col min-h-[calc(100svh-80px)]">
         <div className="relative z-10 flex-1 flex items-start pt-20" style={{marginLeft: '-1rem', marginRight: '-1rem'}}>
           <HeroSection 
             showTabs={false}
@@ -43,20 +45,25 @@ export default function AboutPage() {
             className="bg-transparent w-full h-full flex items-start py-0"
           />
         </div>
-          {/* Independent Hero Image Section - Positioned absolutely within hero container */}
-                <div className="absolute top-0 left-0 right-0 bottom-0 overflow-visible pointer-events-none">
-                  {/* Main Hero Image - Woman with Laptop - Positioned to show full image */}
-                  <div className="absolute top-[45%] left-[70%] transform -translate-x-1/2 -translate-y-1/2 z-20 w-[315px] h-[266px] sm:w-[405px] sm:h-[341px] md:w-[450px] md:h-[300px] lg:w-[450px] lg:h-[300px] xl:w-[650px] xl:h-[639px]">
-                    <Image 
-                      src="/about-us.svg" 
-                      alt="Woman with laptop" 
-                      width={450} 
-                      height={300} 
-                      className="w-full h-full object-contain"
-                      priority 
-                    />
-                  </div>
-                </div>
+        {/* Positioned hero artwork per spec (layered above wave but below text) */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            aria-hidden="true"
+            style={{
+              position:'absolute',
+              width:'821px',
+              height:'709px',
+              top:'0px',
+              left:'848.48px',
+              opacity:1,
+              zIndex:99,
+              backgroundImage:"url('/about-us-hero.svg')",
+              backgroundRepeat:'no-repeat',
+              backgroundSize:'contain',
+              backgroundPosition:'center',
+            }}
+          />
+        </div>
       </div>
 
       {/* About Mapkie Section (Mission & Vision) */}
@@ -130,7 +137,21 @@ export default function AboutPage() {
       </section>
 
       {/* Reuse existing sections for social proof */}
-      <CoreValuesSection />
+  <CoreValuesSection />
+  <NewsCoverageSection 
+    items={[
+      { name: 'Google News', src: '/google-news.svg' },
+      { name: 'dailyhunt', src: '/dailyhunt.svg' },
+      { name: 'Indian Economic Observer', src: '/indian-economic.svg' },
+      { name: 'US WORLD TODAY', src: '/us-world.svg' },
+      { name: 'The Print', src: '/the-print.svg' },
+      { name: 'England News', src: '/england-news.svg' },
+      { name: 'BBC News', src: '/bbc-news.svg' },
+      { name: 'US WORLD TODAY', src: '/us-world.svg' },
+      { name: 'NBC', src: '/nbc.svg' },
+    ]}
+  />
+  <JourneyTimelineSection />
       <ResultsSection />
       <TestimonialSection />
     </div>

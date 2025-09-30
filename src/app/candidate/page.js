@@ -62,6 +62,7 @@ export default function CandidatePage() {
             hideImageSection={true}
             className="bg-transparent w-full h-full flex items-start py-0"
             contentMaxWidth="654px"
+            scrollTargetId="candidate-benefits"
           />
         </div>
         
@@ -81,7 +82,7 @@ export default function CandidatePage() {
         </div>
       </div>
       
-        <div className="relative z-10 py-24 bg-white">
+  <div id="candidate-benefits" className="relative z-10 py-24 bg-white scroll-mt-24">
           <div className="max-w-7xl mx-auto px-4 lg:px-4">
 
           <div className="text-center mb-16">

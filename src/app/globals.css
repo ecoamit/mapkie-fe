@@ -191,6 +191,27 @@ button:disabled:hover {
     text-align: center;
   }
 
+  /* About hero headline typography */
+  .about-hero-light-50 {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    line-height: 130%;
+    letter-spacing: 0;
+    color: #1D6C86;
+    display:inline-block;
+  }
+  .about-hero-bold-60 {
+    font-family: 'Lexend', var(--font-lexend), sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 110%;
+    letter-spacing: 0;
+    color: #1D6C86;
+;
+    display:inline-block;
+  }
+
   /* Candidate Feature Mini Cards (Referrals / Resume / Mock) */
   .candidate-card {
     width: 386px;
@@ -403,4 +424,14 @@ button:disabled:hover {
     .feature-image img { width: 100%; height: auto; }
     .feature-content { align-items: flex-start; }
   }
+
+  /* ================= Journey Timeline Utilities ================= */
+  .journey-wrapper { position:relative; }
+  .journey-line { position:absolute; top:52px; left:0; right:0; height:2px; background:linear-gradient(90deg,#0C4F63 0%, #A9C9D5 100%); opacity:.55; }
+  .journey-item-year { background:#0C4F63; color:#fff; font-weight:600; font-size:16px; line-height:1; padding:14px 20px; border-radius:6px; display:inline-block; min-width:88px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.08); }
+  .journey-item { width:200px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px; position:relative; }
+  .journey-marker { position:absolute; top:62px; width:6px; height:6px; background:#0C4F63; border-radius:50%; box-shadow:0 0 0 4px #E1EEF2; }
+  .journey-item h3 { font-family:'Lexend', var(--font-lexend), sans-serif; font-weight:700; font-size:18px; line-height:120%; color:#0C2E3F; margin:0; }
+  .journey-item p { font-family:'Lexend', var(--font-lexend), sans-serif; font-weight:400; font-size:13px; line-height:150%; color:#2F4650; margin:0; }
+  @media (max-width: 900px) { .journey-line { display:none; } .journey-item { width:100%; align-items:flex-start; text-align:left; padding-left:4px; } .journey-marker { left:0; top:34px; } .journey-item-year { margin-left:0; } }
 }

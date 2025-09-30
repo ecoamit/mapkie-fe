@@ -11,9 +11,30 @@ export default function HeroSection({
   className = "",
   hideImageSection = false,
   hideBackgroundWave = false, // new prop
-  contentMaxWidth = null // optional max width (e.g., '654px') for text content
+  contentMaxWidth = null, // optional max width (e.g., '654px') for text content
+  scrollTargetId = null // id of section to scroll into view when clicking Explore More
 }) {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
+  const isExploreMore = content?.buttonText === 'Explore More' && scrollTargetId;
+  const isEnterpriseTab = showTabs && tab === 'enterprise';
+
+  const handleExploreClick = (e) => {
+    if (!isExploreMore) return; // fallback safety
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      const el = document.getElementById(scrollTargetId);
+      if (el) {
+        try {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (_) {
+          // graceful fallback
+          console.error('Smooth scroll failed, using manual scroll');
+          const top = el.getBoundingClientRect().top + window.scrollY - 10;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
     <section
@@ -84,82 +105,91 @@ export default function HeroSection({
                 {content.subheadline}
               </p>
             </div>
+          ) : showTabs && isEnterpriseTab ? (
+            <>
+              <h1 className="text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light mb-4 mt-2 ">
+                The Best Platform for
+                <br />
+                <span className="font-bold md:text-[38px] xl:text-[50px] text-[#1D6C86]">Technical Interviews</span>
+              </h1>
+              <p className="text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-[#384C5D]">
+                Let experts handle your technical interviews while your team focuses on building
+              </p>
+            </>
           ) : showTabs ? (
-            tab === "enterprise" ? (
-              <>
-                <h1 className="text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light mb-4 mt-2 ">
-                  The Best Platform for
-                  <br />
-                  <span className="font-bold md:text-[38px] xl:text-[50px] text-[#1D6C86]">Technical Interviews</span>
-                </h1>
-                <p className="text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-[#384C5D]">
-                  Let experts handle your technical interviews while your team focuses on building
-                </p>
-              </>
-            ) : (
-              <>
-                <h1
-                  className="mb-4 mt-2"
+            <>
+              <h1
+                className="mb-4 mt-2"
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontWeight: 300, // Light
+                  fontSize: '50px',
+                  lineHeight: '130%', // updated per spec
+                  letterSpacing: 0
+                }}
+              >
+                Stand Out to Top{' '}
+                <span
                   style={{
                     fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 300, // Light
+                    fontWeight: 600, // SemiBold
                     fontSize: '50px',
-                    lineHeight: '130%', // updated per spec
-                    letterSpacing: 0
-                  }}
-                >
-                  Stand Out to Top{' '}
-                  <span
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 600, // SemiBold
-                      fontSize: '50px',
-                      lineHeight: '130%',
-                      letterSpacing: 0,
-                      color: '#154D5F'
-                    }}
-                  >
-                    Companies
-                  </span>
-                  <br />
-                  with Proven{' '}
-                  <span
-                    style={{
-                      fontFamily: 'Lexend, sans-serif',
-                      fontWeight: 600,
-                      fontSize: '50px',
-                      lineHeight: '130%',
-                      letterSpacing: 0,
-                      color: '#154D5F'
-                    }}
-                  >
-                    Skills
-                  </span>
-                </h1>
-                <p
-                  className="mb-10 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0"
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 400,
-                    fontSize: '20px',
                     lineHeight: '130%',
                     letterSpacing: 0,
-                    color: '#384C5D'
+                    color: '#154D5F'
                   }}
                 >
-                  Mapkie empowers companies to build stronger teams and individuals to reach their potential.
-                </p>
-              </>
-            )
+                  Companies
+                </span>
+                <br />
+                with Proven{' '}
+                <span
+                  style={{
+                    fontFamily: 'Lexend, sans-serif',
+                    fontWeight: 600,
+                    fontSize: '50px',
+                    lineHeight: '130%',
+                    letterSpacing: 0,
+                    color: '#154D5F'
+                  }}
+                >
+                  Skills
+                </span>
+              </h1>
+              <p
+                className="mb-10 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0"
+                style={{
+                  fontFamily: 'Lexend, sans-serif',
+                  fontWeight: 400,
+                  fontSize: '20px',
+                  lineHeight: '130%',
+                  letterSpacing: 0,
+                  color: '#384C5D'
+                }}
+              >
+                Mapkie empowers companies to build stronger teams and individuals to reach their potential.
+              </p>
+            </>
           ) : null}
           {/* CTA Button */}
           <div className="flex justify-center md:justify-start mt-10">
-            <Link
-              href="/contact"
-              className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
-            >
-              {content?.buttonText || "Request Demo"}
-            </Link>
+            {isExploreMore ? (
+              <button
+                type="button"
+                onClick={handleExploreClick}
+                className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
+                aria-label="Explore more content"
+              >
+                {content?.buttonText}
+              </button>
+            ) : (
+              <Link
+                href="/contact"
+                className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
+              >
+                {content?.buttonText || "Request Demo"}
+              </Link>
+            )}
           </div>
         </div>
 
@@ -303,4 +333,6 @@ HeroSection.propTypes = {
   className: PropTypes.string,
   hideImageSection: PropTypes.bool,
   hideBackgroundWave: PropTypes.bool,
+  contentMaxWidth: PropTypes.string,
+  scrollTargetId: PropTypes.string,
 };
