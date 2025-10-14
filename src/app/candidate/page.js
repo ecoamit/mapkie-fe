@@ -71,8 +71,8 @@ export default function CandidatePage() {
                     style={{
                         backgroundImage: "url('/mobile-candidate-herobg.svg')",
                         backgroundSize: "contain",
-                        backgroundPosition: "center 140px",
-                        minHeight: "clamp(880px,115vh,1080px)",
+                        backgroundPosition: "center 30px",
+                        minHeight: "clamp(850px,100vh,1080px)",
                         paddingBottom: "6rem"
                     }}
                 >
@@ -121,7 +121,7 @@ export default function CandidatePage() {
                 </div>
 
                 {/* DESKTOP / TABLET (restored layout) */}
-               <div className="relative flex flex-col min-h-[calc(100svh-80px)]">
+               <div className=" md:block  hidden relative flex flex-col min-h-[calc(100svh-80px)]">
 					  <div className="relative z-10 flex-1 flex items-start pt-20" style={{marginLeft: '-1rem', marginRight: '-1rem'}}>
 						<HeroSection 
 						  showTabs={false}

@@ -26,7 +26,8 @@ export default function EnterprisePage() {
     <div
       className="min-h-screen overflow-x-hidden"
       style={{
-        background: "#f6f8fa",
+       background:
+					"linear-gradient(135deg, #E8F4F8 0%, #F0F8FA 50%, #E0F2F5 100%)",
         fontFamily: "Lexend, sans-serif",
         fontWeight: 500,
         fontStyle: "normal",
