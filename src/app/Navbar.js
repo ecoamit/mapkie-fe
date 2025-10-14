@@ -22,10 +22,10 @@ export default function Navbar() {
   return (
   <nav className="w-full bg-[#f8fafc] border-b border-[#e5e7eb] pl-[160px] pr-[60px] py-0 flex items-center h-[72px] relative z-50">
       {/* Logo */}
-      <div className="flex items-center gap-2">
-        <Image src={LOGO} alt="Mapkie Logo" width={106} height={34} priority />
-      </div>
-      {/* Desktop Nav Links */}
+        <Link href="/" className="flex items-center gap-2" aria-label="Go to Home">
+          <Image src={LOGO} alt="Mapkie Logo" width={106} height={34} priority />
+        </Link>
+        {/* Desktop Nav Links */}
   <div className="hidden lg:flex gap-2.5 items-center ml-12">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
