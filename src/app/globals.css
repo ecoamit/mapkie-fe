@@ -171,6 +171,11 @@ button:disabled:hover {
     letter-spacing: 0;
     color: #1D6C86;
   }
+    @media (max-width: 767px) {
+    .hero-headline-44 {
+      font-size: 32px;
+    }
+  }
   .hero-headline-44-strong {
     font-weight: 700; /* Bold */
   }
@@ -197,7 +202,12 @@ button:disabled:hover {
     line-height: 130%;
     letter-spacing: 0;
     color: #1D6C86;
-    display:inline-block;
+    display: inline-block;
+  }
+  @media (max-width: 767px) {
+    .about-hero-light-50 {
+      font-size: 27px;
+    }
   }
   .about-hero-bold-60 {
     font-family: 'Lexend', var(--font-lexend), sans-serif;
@@ -206,8 +216,12 @@ button:disabled:hover {
     line-height: 110%;
     letter-spacing: 0;
     color: #1D6C86;
-;
-    display:inline-block;
+    display: inline-block;
+    }
+  @media (max-width: 767px) {
+    .about-hero-bold-60 {
+      font-size: 32px;
+    }
   }
 
   /* Candidate Feature Mini Cards (Referrals / Resume / Mock) */
