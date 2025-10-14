@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTab } from "./TabContext";
 import PropTypes from "prop-types";
+import { usePathname } from "next/navigation"; // ADDED
 
 export default function HeroSection({ 
   showTabs = true, 
@@ -15,13 +16,17 @@ export default function HeroSection({
   scrollTargetId = null
 }) {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
+  const pathname = usePathname();                 // ADDED
+  const isHome = pathname === "/" || pathname === ""; // ADDED
   const isExploreMore = content?.buttonText === 'Explore More' && scrollTargetId;
   const isEnterpriseTab = showTabs && tab === 'enterprise';
 
-  // ADDED: dynamic mobile background class (no overlay)
-  const mobileBgClass = showTabs
-    ? (tab === 'enterprise' ? 'mobile-hero-enterprise-bg' : 'mobile-hero-candidate-bg')
-    : 'mobile-hero-candidate-bg';
+  // REPLACED: remove invalid global URL usage; apply mobile bg ONLY on homepage
+  const mobileBgClass = isHome
+    ? (showTabs
+        ? (tab === 'enterprise' ? 'mobile-hero-enterprise-bg' : 'mobile-hero-candidate-bg')
+        : 'mobile-hero-candidate-bg')
+    : '';
 
   const handleExploreClick = (e) => {
     if (!isExploreMore) return; // fallback safety
@@ -43,7 +48,7 @@ export default function HeroSection({
 
   return (
     <section
-      className={`relative w-full hero-mobile-min-height md:min-h-[calc(100svh-80px)] bg-[#E8F0F3] overflow-hidden flex items-start pt-10 md:pt-12 xl:pt-14 2xl:pt-16 pb-6 md:pb-4 xl:pb-6 2xl:pb-6 pl-4 md:pl-6 xl:pl-10 pr-0 ${mobileBgClass} ${className}`}
+      className={`relative w-full ${isHome ? 'hero-mobile-min-height' : ''} md:min-h-[calc(100svh-80px)] bg-[#E8F0F3] overflow-hidden flex items-start pt-10 md:pt-12 xl:pt-14 2xl:pt-16 pb-6 md:pb-4 xl:pb-6 2xl:pb-6 md:pl-4 md:pl-6 xl:pl-10 pr-0 ${mobileBgClass} ${className}`}
     >
 
       {/* Background Image / Wave (desktop & tablet only now) */} 
@@ -54,7 +59,7 @@ export default function HeroSection({
   )}
 
       {/* Main Content Container */}
-      <div className="relative w-full max-w-[1600px] flex flex-col md:flex-row items-start z-10 mx-4 sm:mx-8 md:mx-8 xl:mx-16 2xl:mx-32 px-4 md:px-0">
+      <div className="relative w-full max-w-[1600px] flex flex-col md:flex-row items-start z-10 mx-4 sm:mx-8 md:mx-8 xl:mx-16 2xl:mx-32 md:px-4 md:px-0">
         {/* Text Block */}
         <div className="w-full md:max-w-[600px] xl:max-w-[800px] pt-0 text-center md:text-left" style={contentMaxWidth ? { maxWidth: contentMaxWidth } : undefined}>
           {/* Tabs - Only show if showTabs is true */}
@@ -242,6 +247,28 @@ export default function HeroSection({
           </>
         )}
       </div>
+
+      {isHome && (
+        <style jsx>{`
+          @media (max-width: 767px) {
+            .mobile-hero-candidate-bg,
+            .mobile-hero-enterprise-bg {
+              background-size: 100% auto;
+              background-position: center bottom;
+              background-repeat: no-repeat;
+            }
+            .mobile-hero-candidate-bg {
+              background-image: url('/mobile-homepage-candidate.svg');
+            }
+            .mobile-hero-enterprise-bg {
+              background-image: url('/mobile-homepage-enterprise.svg');
+            }
+            .hero-mobile-min-height {
+              min-height: 740px;
+            }
+          }
+        `}</style>
+      )}
     </section>
   );
 }
@@ -260,19 +287,3 @@ HeroSection.propTypes = {
   contentMaxWidth: PropTypes.string,
   scrollTargetId: PropTypes.string,
 };
-
-<style jsx>{`
-  @media (max-width: 767px) {
-    .mobile-hero-candidate-bg,
-    .mobile-hero-enterprise-bg {
-      background-size: 100% auto;
-      background-position: center bottom;
-      background-repeat: no-repeat;
-    }
-    /* ONLY class controlling mobile hero min height */
-    .hero-mobile-min-height {
-      min-height: 740px;
-    }
-    /* Removed hero-mobile-safe-area to eliminate extra gap */
-  }
-`}</style>

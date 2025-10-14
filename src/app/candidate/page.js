@@ -30,11 +30,11 @@ const candidateContent = {
 			<span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">
 				All-in-One
 			</span>
-			<span className="hero-headline-44">Platform to <br/>Showcase Your </span>
+			<span className="hero-headline-44">Platform to Showcase Your </span>
 			<span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">
 				Skills
 			</span>
-			<span className="hero-headline-44"> and <br/></span>
+			<span className="hero-headline-44"> and </span>
 			<span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">
 				Stand Out
 			</span>
@@ -71,7 +71,7 @@ export default function CandidatePage() {
                     style={{
                         backgroundImage: "url('/mobile-candidate-herobg.svg')",
                         backgroundSize: "contain",
-                        backgroundPosition: "center 30px",
+                        backgroundPosition: "center 0px",
                         minHeight: "clamp(850px,100vh,1080px)",
                         paddingBottom: "6rem"
                     }}
