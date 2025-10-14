@@ -7,6 +7,8 @@ import NewsCoverageSection from "../NewsCoverageSection";
 import JourneyTimelineSection from "../JourneyTimelineSection";
 import Image from "next/image";
 
+
+
 const aboutContent = {
   headline: (
     <>
@@ -19,6 +21,7 @@ const aboutContent = {
 };
 
 export default function AboutPage() {
+  
   return (
     <div
       className="min-h-screen relative"
@@ -35,8 +38,63 @@ export default function AboutPage() {
     >
       <Navbar />
 
-  {/* Hero Section (wave.svg behavior aligned with home page) */}
-  <div className="relative flex flex-col min-h-[calc(100svh-80px)]">
+      {/* Hero Section (wave.svg behavior aligned with home page) */}
+      {/* Mobile Hero (added, desktop untouched below) */}
+      <div className="md:hidden bg-no-repeat"
+        style={{
+          backgroundImage: "url('/about-us-hero.svg')",
+          backgroundSize: "contain",
+          backgroundPosition: "bottom",
+          minHeight: "770px",
+          paddingBottom: "5rem"
+        }}
+      >
+        <div className="px-6 pt-24 pb-0 max-w-[430px] mx-auto text-center">
+          <h1
+            className="font-bold text-[#061F34]"
+            style={{
+              fontFamily: "Lexend, sans-serif",
+              fontSize: "27px",
+              lineHeight: "1.18",
+              margin: 0
+            }}
+          >
+            {aboutContent.headline}
+          </h1>
+          <p
+            className="mt-5"
+            style={{
+              fontFamily: "Lexend, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "150%",
+              color: "#1E3A4A",
+              marginBottom: 0
+            }}
+          >
+            {aboutContent.subheadline}
+          </p>
+          <div className="mt-7">
+            <a
+              href="#"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006C86]"
+              style={{
+                minHeight: "48px",
+                background: "linear-gradient(99.23deg,#006C86 0%,#061F34 114.48%)",
+                boxShadow: "0 4px 16px 0 rgba(0,0,0,0.10)",
+                fontFamily: "Lexend, sans-serif",
+                letterSpacing: "0.4px"
+              }}
+            >
+              {aboutContent.buttonText}
+            </a>
+          </div>
+          <div style={{ height: "48px" }} />
+        </div>
+      </div>
+
+      {/* Desktop Hero (unchanged, just hidden on mobile) */}
+      <div className="hidden md:flex relative flex-col min-h-[calc(100svh-80px)]">
         <div className="relative z-10 flex-1 flex items-start pt-20" style={{marginLeft: '-1rem', marginRight: '-1rem'}}>
           <HeroSection 
             showTabs={false}
@@ -155,5 +213,6 @@ export default function AboutPage() {
       <ResultsSection />
       <TestimonialSection />
     </div>
+    
   );
 }

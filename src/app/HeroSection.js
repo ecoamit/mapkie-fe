@@ -10,13 +10,18 @@ export default function HeroSection({
   heroImage = null,
   className = "",
   hideImageSection = false,
-  hideBackgroundWave = false, // new prop
-  contentMaxWidth = null, // optional max width (e.g., '654px') for text content
-  scrollTargetId = null // id of section to scroll into view when clicking Explore More
+  hideBackgroundWave = false,
+  contentMaxWidth = null,
+  scrollTargetId = null
 }) {
   const { selectedTab: tab, setSelectedTab: setTab } = useTab();
   const isExploreMore = content?.buttonText === 'Explore More' && scrollTargetId;
   const isEnterpriseTab = showTabs && tab === 'enterprise';
+
+  // ADDED: dynamic mobile background class (no overlay)
+  const mobileBgClass = showTabs
+    ? (tab === 'enterprise' ? 'mobile-hero-enterprise-bg' : 'mobile-hero-candidate-bg')
+    : 'mobile-hero-candidate-bg';
 
   const handleExploreClick = (e) => {
     if (!isExploreMore) return; // fallback safety
@@ -38,12 +43,12 @@ export default function HeroSection({
 
   return (
     <section
-      className={`relative w-full min-h-[calc(100svh-80px)] bg-[#E8F0F3] overflow-hidden flex items-start pt-10 md:pt-12 xl:pt-14 2xl:pt-16 pb-2 md:pb-4 xl:pb-6 2xl:pb-6 pl-4 md:pl-6 xl:pl-10 pr-0 ${className}`}
+      className={`relative w-full hero-mobile-min-height md:min-h-[calc(100svh-80px)] bg-[#E8F0F3] overflow-hidden flex items-start pt-10 md:pt-12 xl:pt-14 2xl:pt-16 pb-6 md:pb-4 xl:pb-6 2xl:pb-6 pl-4 md:pl-6 xl:pl-10 pr-0 ${mobileBgClass} ${className}`}
     >
 
-      {/* Background Image */}
+      {/* Background Image / Wave (desktop & tablet only now) */} 
   {!hideBackgroundWave && (
-      <div className="absolute bottom-[-520px] md:bottom-[-340px] xl:bottom-[-570px] inset-0 z-0">
+      <div className="hidden md:block absolute bottom-[-520px] md:bottom-[-340px] xl:bottom-[-570px] inset-0 z-0">
         <Image src="/wave.svg" alt="Wave background" fill style={{objectFit:'stretch', opacity:0.60}} />
       </div>
   )}
@@ -118,61 +123,29 @@ export default function HeroSection({
             </>
           ) : showTabs ? (
             <>
+              {/* Candidate tab: MOBILE uses enterprise styling (desktop unchanged via md: classes) */}
               <h1
-                className="mb-4 mt-2"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontWeight: 300, // Light
-                  fontSize: '50px',
-                  lineHeight: '130%', // updated per spec
-                  letterSpacing: 0
-                }}
+                className="candidate-mobile-enterprise-style mb-4 mt-2 font-light text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug"
               >
                 Stand Out to Top{' '}
-                <span
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 600, // SemiBold
-                    fontSize: '50px',
-                    lineHeight: '130%',
-                    letterSpacing: 0,
-                    color: '#154D5F'
-                  }}
-                >
+                <span className="font-semibold text-[#154D5F]">
                   Companies
                 </span>
                 <br />
                 with Proven{' '}
-                <span
-                  style={{
-                    fontFamily: 'Lexend, sans-serif',
-                    fontWeight: 600,
-                    fontSize: '50px',
-                    lineHeight: '130%',
-                    letterSpacing: 0,
-                    color: '#154D5F'
-                  }}
-                >
+                <span className="font-semibold text-[#154D5F]">
                   Skills
                 </span>
               </h1>
               <p
-                className="mb-10 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0"
-                style={{
-                  fontFamily: 'Lexend, sans-serif',
-                  fontWeight: 400,
-                  fontSize: '20px',
-                  lineHeight: '130%',
-                  letterSpacing: 0,
-                  color: '#384C5D'
-                }}
+                className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight text-[#384C5D]"
               >
                 Mapkie empowers companies to build stronger teams and individuals to reach their potential.
               </p>
             </>
           ) : null}
           {/* CTA Button */}
-          <div className="flex justify-center md:justify-start mt-10">
+          <div className="flex justify-center md:justify-start mt-3 md:mt-10">
             {isExploreMore ? (
               <button
                 type="button"
@@ -196,56 +169,7 @@ export default function HeroSection({
         {/* Illustration and Cards - Switch by Tab or use custom image */}
         {!hideImageSection && (
           <>
-            {/* Mobile Illustration */}
-            <div className="block mb-2 md:hidden w-full mt-8 mb-4">
-              {heroImage ? (
-                <div className="relative w-full h-[280px] sm:h-[320px] flex items-center justify-center">
-                  <Image 
-                    src={heroImage} 
-                    alt="Hero Image" 
-                    width={280} 
-                    height={200} 
-                    className="object-contain" 
-                    priority 
-                  />
-                </div>
-              ) : showTabs ? (
-                tab === "enterprise" ? (
-                  <div className="relative w-full h-[280px] sm:h-[320px] flex items-end justify-center pb-4">
-                    {/* Main interviewer illustration - aligned to bottom */}
-                    <div className="relative">
-                      <Image 
-                        src="/interviewer-on-laptop.svg" 
-                        alt="Interviewer" 
-                        width={220} 
-                        height={170} 
-                        className="sm:w-[260px] sm:h-[200px] object-contain" 
-                        priority 
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="relative w-full h-[300px] flex items-center justify-center">
-                    {/* Man running for candidate tab */}
-                    <div className="relative">
-                      <Image src="/man-running.svg" alt="Man running" width={280} height={200} priority />
-                    </div>
-                    {/* Mapkie logo (self-contained with its own background in SVG) */}
-                    <div className="absolute bottom-8 left-8">
-                      <Image src="/mapkie-logo.svg" alt="Mapkie Logo" width={56} height={56} priority />
-                    </div>
-                    {/* Company logos for mobile (SVGs already styled) */}
-                    <div className="absolute top-4 right-8 flex flex-col gap-4 items-center">
-                      <Image src="/amazon-logo.svg" alt="Amazon" width={40} height={40} priority />
-                      <Image src="/google-logo.svg" alt="Google" width={40} height={40} priority />
-                      <Image src="/headshot.svg" alt="Headshot" width={40} height={40} priority />
-                    </div>
-                  </div>
-                )
-              ) : null}
-            </div>
-            
-            {/* Desktop Illustration */}
+            {/* Desktop Illustration (unchanged) */}
             <div className="hidden md:block relative flex-1 min-w-[500px] xl:min-w-[800px] h-[400px] lg:h-[460px] xl:h-[500px] right-0" style={{background: 'url(/dotted-bg.svg) left top / cover no-repeat',marginTop: '32px', marginBottom: '-20px', marginRight: '-126px' }}>
               {heroImage ? (
                 <div className="absolute left-[0px] bottom-[-60px] md:bottom-[-80px] lg:bottom-[-100px] xl:bottom-[-140px] z-10 flex items-center justify-center w-full h-full">
@@ -336,3 +260,19 @@ HeroSection.propTypes = {
   contentMaxWidth: PropTypes.string,
   scrollTargetId: PropTypes.string,
 };
+
+<style jsx>{`
+  @media (max-width: 767px) {
+    .mobile-hero-candidate-bg,
+    .mobile-hero-enterprise-bg {
+      background-size: 100% auto;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+    }
+    /* ONLY class controlling mobile hero min height */
+    .hero-mobile-min-height {
+      min-height: 740px;
+    }
+    /* Removed hero-mobile-safe-area to eliminate extra gap */
+  }
+`}</style>

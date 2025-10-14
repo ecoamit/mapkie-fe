@@ -1,5 +1,3 @@
-
-
 @import "tailwindcss";
 /* Import all Lexend font weights and styles */
 @import "@fontsource/lexend/100.css";
@@ -173,6 +171,11 @@ button:disabled:hover {
     letter-spacing: 0;
     color: #1D6C86;
   }
+    @media (max-width: 767px) {
+    .hero-headline-44 {
+      font-size: 32px;
+    }
+  }
   .hero-headline-44-strong {
     font-weight: 700; /* Bold */
   }
@@ -199,7 +202,12 @@ button:disabled:hover {
     line-height: 130%;
     letter-spacing: 0;
     color: #1D6C86;
-    display:inline-block;
+    display: inline-block;
+  }
+  @media (max-width: 767px) {
+    .about-hero-light-50 {
+      font-size: 27px;
+    }
   }
   .about-hero-bold-60 {
     font-family: 'Lexend', var(--font-lexend), sans-serif;
@@ -208,8 +216,12 @@ button:disabled:hover {
     line-height: 110%;
     letter-spacing: 0;
     color: #1D6C86;
-;
-    display:inline-block;
+    display: inline-block;
+    }
+  @media (max-width: 767px) {
+    .about-hero-bold-60 {
+      font-size: 32px;
+    }
   }
 
   /* Candidate Feature Mini Cards (Referrals / Resume / Mock) */
@@ -434,4 +446,44 @@ button:disabled:hover {
   .journey-item h3 { font-family:'Lexend', var(--font-lexend), sans-serif; font-weight:700; font-size:18px; line-height:120%; color:#0C2E3F; margin:0; }
   .journey-item p { font-family:'Lexend', var(--font-lexend), sans-serif; font-weight:400; font-size:13px; line-height:150%; color:#2F4650; margin:0; }
   @media (max-width: 900px) { .journey-line { display:none; } .journey-item { width:100%; align-items:flex-start; text-align:left; padding-left:4px; } .journey-marker { left:0; top:34px; } .journey-item-year { margin-left:0; } }
+
+  /* ================= Mobile Hero Backgrounds ================= */
+  @media (max-width: 767px) {
+    .mobile-hero-candidate-bg {
+      background-image: url('/mobile-homepage-candidate.svg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    .mobile-hero-enterprise-bg {
+      background-image: url('/mobile-homepage-enterprise.svg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+  }
+
+  /* Adjust mobile hero */
+@media (max-width: 767px) {
+  .mobile-hero-candidate-bg,
+  .mobile-hero-enterprise-bg {
+    background-size: contain;
+    background-position: center bottom; /* push illustration lower */
+    background-repeat: no-repeat;
+  }
+  .hero-mobile-min-height {
+    min-height: clamp(860px, 115vh, 1000px); /* taller area */
+  }
+  .hero-mobile-extra-space {
+    padding-bottom: 220px !important; /* space above illustration */
+  }
+}
+
+/* Mobile hero min-height adjustment */
+@media (max-width: 767px) {
+  .hero-mobile-min-height {
+    /* Increase as needed: 940px or 980px if still overlapping */
+    min-height: 740px; /* default */
+  }
+}
 }
