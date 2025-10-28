@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Home", href: "/", width: 85 },
   { name: "Enterprise", href: "/enterprise", width: 122 },
   { name: "Candidate", href: "/candidate", width: 123 },
-  { name: "Pricing", href: "#", width: 93 },
   { name: "About Us", href: "/about", width: 112 },
   { name: "Contact", href: "/contact", width: 101 },
   { name: "Blog", href: "/blog", width: 72 },

@@ -145,7 +145,8 @@ export default function HeroSection({
               <p
                 className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight text-[#384C5D]"
               >
-                Mapkie empowers companies to build stronger teams and individuals to reach their potential.
+                Mapkie revolutionary Real Human interview platform gives you the edge you need to
+land your dream job at Fortune 500 companies.
               </p>
             </>
           ) : null}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link"; // added
 
 export default function Footer() {
   return (
@@ -18,27 +19,36 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Product</div>
             <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li className="footer-link">Why Mapkie</li>
-              <li className="footer-link">Platform</li>
-              <li className="footer-link">Services</li>
-              <li className="footer-link">Testimonial</li>
-              <li className="footer-link">Pricing</li>
+              <li><Link href="/about" className="footer-link block">Why Mapkie</Link></li>
+              <li><Link href="/platform" className="footer-link block">Platform</Link></li> {/* adjust if different route */}
+              <li><Link href="/about" className="footer-link block">Services</Link></li>
+              <li><Link href="/about" className="footer-link block">Testimonial</Link></li> {/* adjust if has its own page */}
             </ul>
           </div>
           <div className="text-center md:text-left">
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Resources</div>
             <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li className="footer-link">About Us</li>
+              <li><Link href="/about" className="footer-link block">About Us</Link></li>
             </ul>
           </div>
-          <div className="text-center md:text-left">
-            <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Other link</div>
-            <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
-              <li className="footer-link">Privacy</li>
-              <li className="footer-link">Terms of Services</li>
-              <li className="footer-link">Contact Us</li>
-            </ul>
-          </div>
+            <div className="text-center md:text-left">
+              <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Other link</div>
+              <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
+                <li>
+                  <a href="https://haparz.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="footer-link block">
+                    Privacy
+                  </a>
+                </li>
+                <li>
+                  <a href="https://haparz.com/tc/" target="_blank" rel="noopener noreferrer" className="footer-link block">
+                    Terms of Services
+                  </a>
+                </li>
+                <li>
+                  <Link href="/contact" className="footer-link block">Contact Us</Link>
+                </li>
+              </ul>
+            </div>
         </div>
         {/* Social Icons */}
         <div className="flex flex-row gap-4 mt-6 md:mt-0 w-full md:w-auto justify-center md:justify-end">

@@ -3,31 +3,24 @@ import React from "react";
 import Image from "next/image";
 
 export default function Trusted() {
-  // Number of logos and gap in px
-  const logos = [
-    "/gspann.png",
-    "/gspann.png",
-    "/gspann.png",
-    "/gspann.png",
-    "/gspann.png"
-  ];
+  const logos = ["/gspann.png", "/HCL.svg", "/datamatics.jpg", "/ebixcash.png"];
   const logoWidth = 200; // px
-  const gap = 48; // px (gap between logos)
-  const totalSetWidth = logos.length * (logoWidth + gap);
+  const gap = 48; // px
+  // Correct width: sum of logo widths + gaps between them (no trailing gap)
+  const singleSetWidth = logos.length * logoWidth + (logos.length - 1) * gap;
 
   return (
     <section className="w-full h-[428px] bg-white flex flex-col items-center justify-center">
       <h2
         className="mb-3 text-center"
         style={{
-          fontFamily: 'Lexend, sans-serif',
-            fontWeight: 700,
-            fontSize: '42px',
-            lineHeight: '125%',
-            letterSpacing: 0,
-            background: 'linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent'
+          fontFamily: "Lexend, sans-serif",
+          fontWeight: 700,
+          fontSize: "42px",
+          lineHeight: "125%",
+          background: "linear-gradient(99.23deg, #006C86 0%, #061F34 114.48%)",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
         }}
       >
         Trusted By Innovation Companies
@@ -35,32 +28,30 @@ export default function Trusted() {
       <p
         className="text-center mb-15"
         style={{
-          fontFamily: 'Lexend, sans-serif',
+          fontFamily: "Lexend, sans-serif",
           fontWeight: 400,
-          fontSize: '20px',
-          lineHeight: '125%',
-          letterSpacing: 0,
-          color: '#586977'
+          fontSize: "20px",
+          lineHeight: "125%",
+          color: "#586977",
         }}
       >
         Let experts handle your technical interviews while your team focuses on building
       </p>
 
-      {/* Rotating logos - works on all screen sizes */}
       <div className="w-full overflow-hidden">
         <div
           className="flex items-center"
           style={{
-            width: `${totalSetWidth * 2}px`,
-            animation: `scrollLogos ${logos.length * 3}s linear infinite` // speed scales with number of logos
+            width: `${singleSetWidth * 2}px`,
+            columnGap: `${gap}px`,
+            animation: `scrollLogos ${logos.length * 3}s linear infinite`,
           }}
         >
-          {/* Original logos */}
           {logos.map((logo, i) => (
             <div
               key={`original-${i}`}
               className="flex flex-shrink-0 justify-center items-center"
-              style={{ width: logoWidth, marginRight: i === logos.length - 1 ? 0 : gap }}
+              style={{ width: logoWidth }}
             >
               <Image
                 src={logo}
@@ -72,12 +63,11 @@ export default function Trusted() {
               />
             </div>
           ))}
-          {/* Duplicated logos for seamless loop */}
           {logos.map((logo, i) => (
             <div
               key={`duplicate-${i}`}
               className="flex flex-shrink-0 justify-center items-center"
-              style={{ width: logoWidth, marginRight: i === logos.length - 1 ? 0 : gap }}
+              style={{ width: logoWidth }}
             >
               <Image
                 src={logo}
@@ -92,11 +82,14 @@ export default function Trusted() {
         </div>
       </div>
 
-      {/* Animation style for scrolling logos */}
       <style jsx>{`
         @keyframes scrollLogos {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-${totalSetWidth}px); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-${singleSetWidth}px);
+          }
         }
       `}</style>
     </section>
