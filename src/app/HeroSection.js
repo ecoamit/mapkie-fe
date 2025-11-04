@@ -144,7 +144,7 @@ experts.
                 </span>
               </h1>
               <p
-                className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight text-[#384C5D]"
+                className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[18px] leading-relaxed md:leading-tight text-[#384C5D]"
               >
                 Mapkie revolutionary Real Human interview platform gives you the edge you need to
 land your dream job at Fortune 500 companies.
@@ -164,7 +164,7 @@ land your dream job at Fortune 500 companies.
               </button>
             ) : (
               <Link
-                href="/referral?type=resume"
+                href={content?.buttonText ? "/referral?type=resume" : "/contact"}
                 className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
               >
                 {content?.buttonText || "Request Demo"}

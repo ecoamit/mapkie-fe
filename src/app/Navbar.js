@@ -48,10 +48,10 @@ export default function Navbar() {
         })}
       </div>
       {/* Desktop Buttons */}
-  <div className="hidden lg:flex gap-3 items-center rounded-full ml-auto">
-  <button className="btn-login shadow-none">
+  <div className="hidden lg:flex gap-2 items-center rounded-full ml-auto">
+  <Link href="/login" className="btn-login shadow-none">
           Login
-        </button>
+        </Link>
   <Link href="/contact" className="btn-primary-gradient focus:outline-none">
           Request Demo
         </Link>

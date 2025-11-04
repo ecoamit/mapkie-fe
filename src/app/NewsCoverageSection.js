@@ -13,9 +13,9 @@ export default function NewsCoverageSection({ items }) {
           <p className="text-[#586977] text-[14px] md:text-[16px] leading-[1.5] m-0">or more than sometimes</p>
         </div>
         <div className="flex flex-wrap justify-center gap-6 md:gap-7">
-          {logos.map((logo) => (
+          {logos.map((i,logo) => (
             <div
-              key={logo.name}
+              key={logo.name + i}
               className="news-logo-card w-[175px] md:w-[195px] h-[60px] flex items-center justify-center bg-white border border-[#0D6C86]/60 rounded-[10px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.08)] transition-shadow duration-200 px-4"
               title={logo.name}
             >
