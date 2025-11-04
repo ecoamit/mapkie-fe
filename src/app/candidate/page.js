@@ -30,7 +30,7 @@ const candidateContent = {
 			<span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">
 				All-in-One
 			</span>
-			<span className="hero-headline-44">Platform to Showcase Your </span>
+			<span className="hero-headline-44"> Platform to Showcase Your </span>
 			<span className="hero-headline-44 hero-headline-44-strong text-[#061F34]">
 				Skills
 			</span>

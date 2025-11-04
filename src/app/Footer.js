@@ -20,8 +20,8 @@ export default function Footer() {
             <div className="font-bold text-[#05445E] mb-3 text-base md:text-[17px]" style={{fontFamily:'Lexend, sans-serif'}}>Product</div>
             <ul className="space-y-2 md:space-y-1" style={{fontFamily:'Lexend, sans-serif'}}>
               <li><Link href="/about" className="footer-link block">Why Mapkie</Link></li>
-              <li><Link href="/platform" className="footer-link block">Platform</Link></li> {/* adjust if different route */}
-              <li><Link href="/about" className="footer-link block">Services</Link></li>
+              {/* <li><Link href="/platform" className="footer-link block">Platform</Link></li> adjust if different route */}
+              <li><Link href="/referral" className="footer-link block">Services</Link></li>
               <li><Link href="/about" className="footer-link block">Testimonial</Link></li> {/* adjust if has its own page */}
             </ul>
           </div>
