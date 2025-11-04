@@ -27,7 +27,7 @@ const Login = () => {
         // Store login state (you might want to use proper auth context later)
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userEmail', email);
-        router.push('/dashboard'); // or wherever you want to redirect
+        router.push('/'); // or wherever you want to redirect
       } else {
         setError('Invalid email or password');
       }
