@@ -118,12 +118,13 @@ export default function HeroSection({
           ) : showTabs && isEnterpriseTab ? (
             <>
               <h1 className="text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug font-light mb-4 mt-2 ">
-                The Best Platform for
+                Real Human Interviewers
                 <br />
-                <span className="font-bold md:text-[38px] xl:text-[50px] text-[#1D6C86]">Technical Interviews</span>
+                <span className="font-bold md:text-[38px] xl:text-[50px] text-[#1D6C86]">Zero Wasted Time</span>
               </h1>
               <p className="text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-[#384C5D]">
-                Let experts handle your technical interviews while your team focuses on building
+               Mapkie ensures you never compromise on talent quality with seasoned interview
+experts.
               </p>
             </>
           ) : showTabs ? (
@@ -132,18 +133,18 @@ export default function HeroSection({
               <h1
                 className="candidate-mobile-enterprise-style mb-4 mt-2 font-light text-3xl md:text-[38px] xl:text-[50px] leading-tight md:leading-snug"
               >
-                Stand Out to Top{' '}
+                Transform Your&nbsp;
                 <span className="font-semibold text-[#154D5F]">
-                  Companies
+                   Interview Performance
                 </span>
                 <br />
-                with Proven{' '}
+                into Top Company&nbsp;
                 <span className="font-semibold text-[#154D5F]">
-                  Skills
+                  Offers.
                 </span>
               </h1>
               <p
-                className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[20px] leading-relaxed md:leading-tight text-[#384C5D]"
+                className="candidate-mobile-enterprise-paragraph mb-8 font-normal max-w-full md:max-w-[480px] xl:max-w-[520px] mx-auto md:mx-0 text-base md:text-[18px] xl:text-[18px] leading-relaxed md:leading-tight text-[#384C5D]"
               >
                 Mapkie revolutionary Real Human interview platform gives you the edge you need to
 land your dream job at Fortune 500 companies.
@@ -163,7 +164,7 @@ land your dream job at Fortune 500 companies.
               </button>
             ) : (
               <Link
-                href="/contact"
+                href={content?.buttonText ? "/referral?type=resume" : "/contact"}
                 className="btn-request-demo text-sm md:text-[14px] px-8 md:px-10 md:py-5"
               >
                 {content?.buttonText || "Request Demo"}

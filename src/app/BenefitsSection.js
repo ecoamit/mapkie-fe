@@ -32,17 +32,17 @@ export default function BenefitsSection({ benefits, forceEnterprise = false }) {
     {
       img: "/save-time.svg",
       title: "Save Engineering Time",
-      desc: "Let experts handle your technical interviews while your team focuses on building.",
+      desc: "Get detailed candidate reports with hiring recommendations delivered within 2 business days, not weeks or months.",
     },
     {
       img: "/expert-interviewers.svg",
-      title: "Expert Interviewers",
-      desc: "Let experts handle your technical interviews while your team focuses on building.",
+      title: "Expert-Led Interviews",
+      desc: "Our certified technical interviewers conduct comprehensive evaluations using proven methodologies, not rushed internal screenings.",
     },
     {
       img: "/evaluation.svg",
-      title: "Comprehensive Evaluation",
-      desc: "Let experts handle your technical interviews while your team focuses on building.",
+      title: "Bias-Free Evaluation",
+      desc: "Structured interviews with standardized scoring eliminate unconscious bias and ensure fair assessment for every candidate.",
     },
   ];
 

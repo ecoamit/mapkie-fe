@@ -114,21 +114,21 @@ export default function FeaturesSection({ forceEnterprise = false }) {
   const enterpriseFeatures = [
     {
       image: "/live-coding.svg",
-      alt: "Live Coding Environment",
-      title: "Live Coding Environment",
-      body: "With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end."
+      alt: "Interactive Coding Platform.",
+      title: "Interactive Coding Platform.",
+      body: "Conduct live coding interviews with trusted professionals. Candidates recommended byMapkie are 70% more likely to be hired—make every interview count."
     },
     {
       image: "/hd-video.svg",
       alt: "HD Video Interviews",
       title: "HD Video Interviews",
-      body: "With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end."
+      body: "Our verified interviewers ensure fair evaluation in the Video Interviews. With features like screen sharing, code editor, and more, you can assess candidates effectively."
     },
     {
       image: "/expert-network.svg",
       alt: "Expert Interview Network",
       title: "Expert Interview Network",
-      body: "With a network of verified interviewers, you can trust the results given by us. Candidates recommended by us after the interview have more than a 70% chance to be selected at your end."
+      body: "Our verified interviewers ensure fair evaluation. Candidates we recommend have a 70%+ selection rate—hire smarter, with confidence."
     }
   ];
 
@@ -178,7 +178,7 @@ export default function FeaturesSection({ forceEnterprise = false }) {
             }}
           >
             {effectiveTab === 'enterprise' ? (
-              <>One Platform for All of Your Technical<br className="hidden sm:block" />Assessment & Interview Needs</>
+              <>Unified Technical Hiring—From <br className="hidden sm:block" />Assessment to Interview</>
             ) : (
               <>Everything You Need to Get Hired —<br className="hidden sm:block" />All in One Platform</>
             )}
@@ -195,7 +195,8 @@ export default function FeaturesSection({ forceEnterprise = false }) {
               color: '#586977'
             }}
           >
-            Let experts handle your technical interviews while your team focuses on building
+            Give your team more time to build. Let Mapkie’s experts manage every step of your
+technical interview process.
           </p>
         </div>
 

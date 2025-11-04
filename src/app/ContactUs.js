@@ -86,6 +86,7 @@ export default function ContactUs() {
                 id="cu_phone"
                 type="tel"
                 placeholder="Enter Phone Number"
+                required
                 className="w-full h-11 rounded-md border border-[#D5E2EA] bg-white px-3.5 text-[14px] placeholder:text-[#9CB0BD] focus:outline-none focus:ring-2 focus:ring-[#1D6C86]/30 focus:border-[#1D6C86] transition"
               />
             </div>
